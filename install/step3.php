@@ -2,13 +2,16 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+require_once __DIR__ . '/check_lock.php';
+
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 $configPath = dirname(__DIR__) . "/system/config.inc.php";
 $error = "";
 $success_messages = [];
-$requirements_met = true; // Wird false, wenn ein Check fehlschlägt
+$requirements_met = true;
 
 // PHP-Version prüfen
 $required_php_version = '8.1.0';
@@ -19,73 +22,93 @@ if (version_compare(PHP_VERSION, $required_php_version, '<')) {
     $success_messages[] = "✅ PHP-Version ist korrekt! (Aktuell: " . PHP_VERSION . ")";
 }
 
-// config.inc.php ggf. temporär laden für MySQL-Test
+// MySQL-Verbindung über config.inc.php testen (wenn Datei existiert)
 $_database = null;
+
 if (file_exists($configPath)) {
-    include($configPath);
-}
+    $config_content = file_get_contents($configPath);
 
-// Wenn $_database bereits initialisiert wurde, testen wir
-if ($_database instanceof mysqli && !$_database->connect_error) {
-    $mysql_version = $_database->server_info;
+    // Nur laden, wenn Konfiguration NICHT leer ist
+    if (strpos($config_content, "new mysqli") !== false &&
+        strpos($config_content, "''") === false) {
+        include($configPath);
 
-    if (strpos($mysql_version, 'MariaDB') !== false) {
-        $success_messages[] = "✅ MariaDB-Version erkannt! ($mysql_version)";
-    } elseif (version_compare($mysql_version, '8.0', '<')) {
-        $error .= "❌ MySQL-Version zu niedrig! (Aktuell: $mysql_version)<br>";
-        $requirements_met = false;
-    } else {
-        $success_messages[] = "✅ MySQL-Version ist korrekt! ($mysql_version)";
+        if ($_database instanceof mysqli && !$_database->connect_error) {
+            $mysql_version = $_database->server_info;
+
+            if (strpos($mysql_version, 'MariaDB') !== false) {
+                $success_messages[] = "✅ MariaDB-Version erkannt! ($mysql_version)";
+            } elseif (version_compare($mysql_version, '8.0', '<')) {
+                $error .= "❌ MySQL-Version zu niedrig! (Aktuell: $mysql_version)<br>";
+                $requirements_met = false;
+            } else {
+                $success_messages[] = "✅ MySQL-Version ist korrekt! ($mysql_version)";
+            }
+        } else {
+            $error .= "⚠️ config.inc.php ist vorhanden, aber enthält ungültige Verbindungsdaten.<br>";
+            $requirements_met = false;
+        }
     }
-} else {
-    $error .= "⚠️ Keine gültige MySQL-Verbindung verfügbar (config.inc.php wurde eventuell noch nicht erstellt).<br>";
-    $requirements_met = false;
 }
 
 // Schreibrechte prüfen
 $css_file = __DIR__ . '/../includes/themes/default/css/stylesheet.css';
 if (!is_writable($css_file)) {
-    $error .= "❌ Die Datei <code>stylesheet.css</code> ist nicht schreibbar.<br>";
+    $error .= "❌ Die Datei stylesheet.css ist nicht schreibbar.<br>";
     $requirements_met = false;
 } else {
-    $success_messages[] = "✅ Die Datei <code>stylesheet.css</code> ist schreibbar.";
+    $success_messages[] = "✅ Die Datei stylesheet.css ist schreibbar.";
 }
 
-// Wenn Formular abgeschickt wurde
-if ($_SERVER["REQUEST_METHOD"] === "POST" && $requirements_met) {
-    $db_host = $_POST["db_host"] ?? "localhost";
-    $db_user = $_POST["db_user"] ?? "";
-    $db_pass = $_POST["db_pass"] ?? "";
-    $db_name = $_POST["db_name"] ?? "";
+// Initialwerte
+$DB_HOST = $DB_USER = $DB_PASS = $DB_NAME = '';
+$error_message = '';
 
-    $mysqli = @new mysqli($db_host, $db_user, $db_pass, $db_name);
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $requirements_met) {
+    $DB_HOST = trim($_POST['DB_HOST'] ?? '');
+    $DB_USER = trim($_POST['DB_USER'] ?? '');
+    $DB_PASS = $_POST['DB_PASS'] ?? '';
+    $DB_NAME = trim($_POST['DB_NAME'] ?? '');
 
-    if ($mysqli->connect_error) {
-        $error = "❌ Fehler bei der Verbindung zur Datenbank: " . $mysqli->connect_error;
-    } else {
-        // Konfigurationsdatei schreiben
-        $configContent = <<<PHP
-<?php
-define("DB_HOST", "{$db_host}");
-define("DB_USER", "{$db_user}");
-define("DB_PASS", "{$db_pass}");
-define("DB_NAME", "{$db_name}");
+    try {
+        $conn = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
 
-\$_database = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-
-if (\$_database->connect_error) {
-    die("Datenbankverbindung fehlgeschlagen: " . \$_database->connect_error);
-}
-
-\$_database->set_charset("utf8mb4");
-PHP;
-
-        if (file_put_contents($configPath, $configContent)) {
-            header("Location: step4.php");
-            exit;
-        } else {
-            $error = "❌ Fehler beim Schreiben der Konfigurationsdatei.";
+        if ($conn->connect_error) {
+            throw new mysqli_sql_exception("Verbindung zur Datenbank fehlgeschlagen: " . $conn->connect_error);
         }
+
+        // Datenbankverbindung war erfolgreich, also schreibe die config.inc.php
+        $configContent = "<?php\n";
+$configContent .= "/**\n * Webspell-RM Konfigurationsdatei\n * Automatisch generiert durch Installer\n */\n";
+$configContent .= "define('DB_HOST', '" . addslashes($DB_HOST) . "');\n";
+$configContent .= "define('DB_USER', '" . addslashes($DB_USER) . "');\n";
+$configContent .= "define('DB_PASS', '" . addslashes($DB_PASS) . "');\n";
+$configContent .= "define('DB_NAME', '" . addslashes($DB_NAME) . "');\n";
+$configContent .= "?>";
+
+file_put_contents($configPath, $configContent);
+        
+
+        $configFile = dirname(__DIR__) . '/system/config.inc.php';
+
+        if (file_put_contents($configFile, $configContent)) {
+            $success_messages[] = "✅ config.inc.php wurde erfolgreich erstellt!";
+        } else {
+            $error_message = "❌ Fehler beim Erstellen der config.inc.php Datei.";
+        }
+
+        $_SESSION['db_data'] = [
+            'DB_HOST' => $DB_HOST,
+            'DB_USER' => $DB_USER,
+            'DB_PASS' => $DB_PASS,
+            'DB_NAME' => $DB_NAME
+        ];
+
+        header("Location: step4.php");
+        exit;
+
+    } catch (mysqli_sql_exception $e) {
+        $error_message = '❌ Fehler bei der Datenbankverbindung: ' . $e->getMessage();
     }
 }
 ?>
@@ -99,8 +122,7 @@ PHP;
     <link href="/install/css/installer.css" rel="stylesheet">
 </head>
 <body>
-
-    <div class="container my-5">
+<div class="container my-5">
     <div class="text-center">
         <img src="/install/images/logo.png" alt="Webspell-RM Logo" class="install-logo mb-4">
         <h2>Schritt 3: Systemüberprüfung & Datenbankverbindung</h2>
@@ -109,51 +131,52 @@ PHP;
     <div class="card shadow-sm border-0 mt-4">
         <div class="card-body">
 
-            <h3>Systemüberprüfung - Schritt 3</h3>
+            <h3>Systemüberprüfung</h3>
 
-            <!-- Erfolgsmeldungen -->
             <?php foreach ($success_messages as $msg): ?>
                 <div class="alert alert-success" role="alert"><?= htmlspecialchars($msg) ?></div>
             <?php endforeach; ?>
 
-            <!-- Fehlermeldungen -->
             <?php if ($error): ?>
-                <div class="alert alert-danger" role="alert"><?= htmlspecialchars($error) ?></div>
+                <div class="alert alert-danger" role="alert"><?= $error ?></div>
+            <?php endif; ?>
+
+            <?php if ($error_message): ?>
+                <div class="alert alert-danger" role="alert"><?= htmlspecialchars($error_message) ?></div>
             <?php endif; ?>
 
             <?php if ($requirements_met): ?>
                 <hr>
-                <h3>Datenbankverbindung einrichten - Schritt 3</h3>
+                <h3>Datenbankverbindung einrichten</h3>
                 <form method="post">
                     <div class="mb-3">
                         <label class="form-label">Host:</label>
-                        <input class="form-control" type="text" name="db_host" value="localhost" required>
+                        <input class="form-control" type="text" name="DB_HOST" value="<?= htmlspecialchars($DB_HOST ?: 'localhost') ?>" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Benutzername:</label>
-                        <input class="form-control" type="text" name="db_user" required>
+                        <input class="form-control" type="text" name="DB_USER" value="<?= htmlspecialchars($DB_USER) ?>" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Passwort:</label>
-                        <input class="form-control" type="password" name="db_pass">
+                        <input class="form-control" type="password" name="DB_PASS">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Datenbankname:</label>
-                        <input class="form-control" type="text" name="db_name" required>
+                        <input class="form-control" type="text" name="DB_NAME" value="<?= htmlspecialchars($DB_NAME) ?>" required>
                     </div>
                     <div class="mb-3">
                         <input class="btn btn-primary btn-lg w-100" type="submit" value="Weiter zu Schritt 4">
                     </div>
                 </form>
             <?php else: ?>
-                <p class="text-danger" style="margin-top:20px;">❌ Bitte behebe die oben genannten Probleme, um fortzufahren.</p>
+                <p class="text-danger mt-4">❌ Bitte behebe die oben genannten Probleme, um fortzufahren.</p>
             <?php endif; ?>
         </div>
-    
-
-    <div class="card-footer text-center text-muted small">
-                            &copy; <?= date("Y") ?> Webspell-RM Installer
-                        </div>
+        <div class="card-footer text-center text-muted small">
+            &copy; <?= date("Y") ?> Webspell-RM Installer
+        </div>
+    </div>
 </div>
 
 <script src="/install/js/bootstrap.bundle.min.js"></script>

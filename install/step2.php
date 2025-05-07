@@ -3,11 +3,14 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+require_once __DIR__ . '/check_lock.php';
+
 set_time_limit(300);
 ini_set('memory_limit', '512M');
 
-$updateUrl = "https://update.webspell-rm.de/releases/2.1.7/cms.zip";
-$tempZipPath = __DIR__ . "/cms.zip";
+#$updateUrl = "https://update.webspell-rm.de/releases/2.1.7/cms.zip";
+$updateUrl = "https://github.com/Webspell-RM/Webspell-RM-3.0-Next-Generation/archive/refs/heads/main.zip";
+$tempZipPath = __DIR__ . "/main.zip";
 $extractPath = dirname(__DIR__); // Ziel: Webroot
 
 $messages = [];

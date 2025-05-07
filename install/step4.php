@@ -6,7 +6,7 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 $configPath = dirname(__DIR__) . "/system/config.inc.php";
-$sqlFile = __DIR__ . "/database.sql";
+$sqlFile = __DIR__ . "/data/database.sql";
 $error = "";
 $success = false;
 

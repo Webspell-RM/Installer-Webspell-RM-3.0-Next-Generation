@@ -3,6 +3,8 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+require_once __DIR__ . '/check_lock.php';
+
 // Wenn der Benutzer das Formular abgesendet hat
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Überprüfen, ob die Checkbox angekreuzt wurde
