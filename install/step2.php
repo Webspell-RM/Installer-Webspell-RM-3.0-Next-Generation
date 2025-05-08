@@ -9,9 +9,71 @@ set_time_limit(300);
 ini_set('memory_limit', '512M');
 
 #$updateUrl = "https://update.webspell-rm.de/releases/2.1.7/cms.zip";
+
+
+// URL der ZIP-Datei von GitHub
 $updateUrl = "https://github.com/Webspell-RM/Webspell-RM-3.0-Next-Generation/archive/refs/heads/main.zip";
+// Temporärer Pfad für das ZIP-Archiv
 $tempZipPath = __DIR__ . "/main.zip";
-$extractPath = dirname(__DIR__); // Ziel: Webroot
+// Zielpfad für die Extraktion (Webroot)
+$extractPath = dirname(__DIR__);
+
+// Schritt 1: ZIP-Datei von GitHub herunterladen
+file_put_contents($tempZipPath, fopen($updateUrl, 'r'));
+
+// Schritt 2: ZIP-Datei extrahieren
+$zip = new ZipArchive;
+if ($zip->open($tempZipPath) === TRUE) {
+    // Extrahiere alle Dateien in das temporäre Verzeichnis
+    $zip->extractTo(__DIR__);
+    $zip->close();
+    
+    echo "ZIP-Datei erfolgreich extrahiert.\n";
+
+    // Schritt 3: Webroot-Dateien kopieren
+    // Der Ordner, der aus der ZIP-Datei extrahiert wurde, hat den Namen "Webspell-RM-3.0-Next-Generation-main"
+    $extractedDir = __DIR__ . "/Webspell-RM-3.0-Next-Generation-main";
+    
+    if (is_dir($extractedDir)) {
+        // Durch alle Dateien und Ordner im extrahierten Verzeichnis iterieren
+        $iterator = new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator($extractedDir),
+            RecursiveIteratorIterator::LEAVES_ONLY
+        );
+
+        foreach ($iterator as $fileinfo) {
+            if ($fileinfo->isFile()) {
+                // Quell- und Zielpfad
+                $sourceFile = $fileinfo->getRealPath();
+                $relativePath = substr($sourceFile, strlen($extractedDir) + 1);
+                $targetFile = $extractPath . "/" . $relativePath;
+                
+                // Zielverzeichnis erstellen, falls es nicht existiert
+                $targetDir = dirname($targetFile);
+                if (!is_dir($targetDir)) {
+                    mkdir($targetDir, 0777, true);
+                }
+
+                // Datei auf den Webserver kopieren
+                if (!copy($sourceFile, $targetFile)) {
+                    echo "Fehler beim Kopieren der Datei: $sourceFile\n";
+                }
+            }
+        }
+
+        echo "Webroot-Dateien erfolgreich auf den Webserver kopiert.\n";
+    } else {
+        echo "Fehler: Das extrahierte Verzeichnis wurde nicht gefunden.\n";
+    }
+
+    // ZIP-Datei löschen
+    unlink($tempZipPath);
+
+} else {
+    echo "Fehler beim Öffnen der ZIP-Datei.\n";
+}
+
+
 
 $messages = [];
 
