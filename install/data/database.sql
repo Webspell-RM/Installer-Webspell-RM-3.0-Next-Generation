@@ -941,7 +941,7 @@ CREATE TABLE IF NOT EXISTS `user_register_attempts` (
 -- Ende der Tabelle 'user_register_attempts'
 
 -- Tabellenstruktur für Tabelle `user_groups`
-CREATE TABLE IF NOT EXISTS `user_groups` (
+/*CREATE TABLE IF NOT EXISTS `user_groups` (
   `usgID` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `userID` int(11) NOT NULL DEFAULT '0',
   `news` int(1) NOT NULL DEFAULT '0',
@@ -961,18 +961,18 @@ CREATE TABLE IF NOT EXISTS `user_groups` (
 ) ENGINE=InnoDB;
 
 INSERT INTO `user_groups` (`usgID`, `userID`, `news`, `news_writer`, `newsletter`, `polls`, `forum`, `moderator`, `clanwars`, `feedback`, `user`, `page`, `files`, `cash`, `gallery`, `super`) VALUES
-(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);*/
 -- Ende der Tabelle 'user_groups'
 
 -- Tabellenstruktur für Tabelle `user_forum_groups`
-CREATE TABLE IF NOT EXISTS `user_forum_groups` (
+/*CREATE TABLE IF NOT EXISTS `user_forum_groups` (
   `usfgID` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `userID` int(11) NOT NULL DEFAULT '0',
   `group_flag` int(1) NOT NULL
 ) ENGINE=InnoDB;
 
 INSERT INTO `user_forum_groups` (`usfgID`, `userID`, `group_flag`) VALUES
-(1, 1, 1); 
+(1, 1, 1); */
 -- Ende der Tabelle 'user_forum_groups'
 
 -- Tabellenstruktur für Tabelle `user_username`
@@ -980,8 +980,6 @@ CREATE TABLE IF NOT EXISTS `user_username` (
   `userID` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `username` varchar(255) NOT NULL
 ) ENGINE=InnoDB;
-
-INSERT INTO `user_username` (`userID`, `username`) VALUES (1, '{{adminuser}}');
 -- Ende der Tabelle 'user_username'
 
 -- Tabellenstruktur für Tabelle `user_visitors`
