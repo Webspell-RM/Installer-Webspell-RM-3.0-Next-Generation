@@ -793,7 +793,7 @@ INSERT INTO `user_roles` (`roleID`, `role_name`, `description`, `is_default`) VA
 (6, 'War-Organisator', 'Organisiert Clanwars und Turniere', 0),
 (7, 'Moderator', 'Betreut Forum und Community-Bereiche', 0),
 (8, 'Redakteur', 'Schreibt News und verwaltet Inhalte', 0),
-(9, 'Member', 'Vollwertiges Clan-Mitglied', 1),
+(9, 'Member', 'Vollwertiges Clan-Mitglied', 0),
 (10, 'Trial-Member', 'Mitglied auf Probe', 0),
 (11, 'Gast', 'Öffentlicher Besucher ohne Login', 0),
 (12, 'Registrierter Benutzer', 'Angemeldet, aber nicht im Clan', 0),
