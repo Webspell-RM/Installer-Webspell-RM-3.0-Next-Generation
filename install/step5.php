@@ -174,7 +174,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <?php if ($success): ?>
             <div class="success">
                 <?= $success ?><br><br>
-                <a class="btn btn-primary btn-lg w-100" href="step6.php"><strong>Weiter zu Schritt 6 (Abschluss)</strong></a>
+                <!--<a class="btn btn-primary btn-lg w-100" href="step6.php"><strong>Weiter zu Schritt 6 (Abschluss)</strong></a>-->
+                <div class="alert alert-success text-center" role="alert">
+                    <strong>Weiter zu Schritt 6 (Abschluss)</strong>
+                </div>
             </div>
         <?php endif; ?>
     </div>

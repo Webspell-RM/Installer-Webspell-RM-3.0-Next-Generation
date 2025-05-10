@@ -143,27 +143,23 @@ INSERT INTO `navigation_dashboard_links` (`linkID`, `catID`, `modulname`, `name`
 (9, 1, 'ac_database', '[[lang:de]]Datenbank[[lang:en]]Database[[lang:it]]Database', 'admincenter.php?site=database', 9),
 (10, 1, 'ac_update', '[[lang:de]]Webspell-RM Update[[lang:en]]Webspell-RM Update[[lang:it]]Aggiornamento Webspell-RM', 'admincenter.php?site=update', 10),
 (11, 3, 'ac_users', '[[lang:de]]Registrierte Benutzer[[lang:en]]Registered Users[[lang:it]]Utenti Registrati', 'admincenter.php?site=users', 1),
-(12, 2, 'ac_spam_forum', '[[lang:de]]Geblockte Inhalte[[lang:en]]Blocked Content[[lang:it]]Contenuti Bloccati', 'admincenter.php?site=spam&action=forum_spam', 1),
-(13, 2, 'ac_spam_user', '[[lang:de]]Nutzer löschen[[lang:en]]Remove User[[lang:it]]Banna Utente', 'admincenter.php?site=spam&action=user', 2),
-(14, 2, 'ac_spam_multi', '[[lang:de]]Multi-Accounts[[lang:en]]Multi-Accounts[[lang:it]]Multi-Account', 'admincenter.php?site=spam&action=multi', 3),
-(15, 2, 'ac_spam_banned_ips', '[[lang:de]]gebannte IPs[[lang:en]]Banned IPs[[lang:it]]IP Bannate', 'admincenter.php?site=banned_ips', 4),
-(16, 5, 'ac_webside_navigation', '[[lang:de]]Webseiten Navigation[[lang:en]]Website Navigation[[lang:it]]Menu Navigazione Web', 'admincenter.php?site=webside_navigation', 1),
-(17, 5, 'ac_themes_installer', '[[lang:de]]Themes Installer[[lang:en]]Themes Installer[[lang:it]]Installazione Themes', 'admincenter.php?site=themes_installer', 2),
-(18, 5, 'ac_themes', '[[lang:de]]Themes[[lang:en]]Themes[[lang:it]]Temi', 'admincenter.php?site=settings_themes', 3),
-(20, 5, 'ac_startpage', '[[lang:de]]Startseite[[lang:en]]Start Page[[lang:it]]Pagina Principale', 'admincenter.php?site=settings_startpage', 5),
-(21, 5, 'ac_static', '[[lang:de]]Statische Seiten[[lang:en]]Static Pages[[lang:it]]Pagine Statiche', 'admincenter.php?site=settings_static', 6),
-(22, 5, 'ac_imprint', '[[lang:de]]Impressum[[lang:en]]Imprint[[lang:it]]Impronta Editoriale', 'admincenter.php?site=settings_imprint', 7),
-(23, 5, 'ac_privacy_policy', '[[lang:de]]Datenschutz-Bestimmungen[[lang:en]]Privacy Policy[[lang:it]]Informativa sulla Privacy', 'admincenter.php?site=settings_privacy_policy', 8),
-(24, 6, 'ac_plugin_manager', '[[lang:de]]Plugin & Widget Manager[[lang:en]]Plugin & Widget Manager[[lang:it]]Gestore di Plugin e Widget', 'admincenter.php?site=plugin_manager', 1),
-(25, 6, 'ac_plugin_installer', '[[lang:de]]Plugin Installer[[lang:en]]Plugin Installer[[lang:it]]Installazione Plugin', 'admincenter.php?site=plugin_installer', 2),
-(26, 1, 'ac_editlang', '[[lang:de]]Spracheditor[[lang:en]]Language Editor[[lang:it]]Editor di Linguaggi', 'admincenter.php?site=editlang', 11),
-(27, 7, 'footer', '[[lang:de]]Footer[[lang:en]]Footer[[lang:it]]Piè di pagina', 'admincenter.php?site=fotter', 0),
-(28, 3, 'ac_admin_security', '[[lang:de]]Admin Security[[lang:en]]Admin Security[[lang:it]]Sicurezza Admin', 'admincenter.php?site=admin_security', 2),
-(29, 3, 'ac_user_roles', '[[lang:de]]User Roles[[lang:en]]User Roles[[lang:it]]Ruoli Utente', 'admincenter.php?site=user_roles', 3),
-(30, 3, 'role_permissions', 'Role Permissions.php', 'admincenter.php?site=admin_role_permissions', 1),
-(31, 1, 'ac_db_stats', 'Datenbank Statistik', 'admincenter.php?site=db_stats', 1),
-(32, 3, 'ac_admin_log', 'Admin Log', 'admincenter.php?site=admin_log', 1),
-(33, 1, 'ac_update_core', 'Update Core', 'admincenter.php?site=update_core', 1);
+(12, 5, 'ac_webside_navigation', '[[lang:de]]Webseiten Navigation[[lang:en]]Website Navigation[[lang:it]]Menu Navigazione Web', 'admincenter.php?site=webside_navigation', 1),
+(13, 5, 'ac_themes_installer', '[[lang:de]]Themes Installer[[lang:en]]Themes Installer[[lang:it]]Installazione Themes', 'admincenter.php?site=themes_installer', 2),
+(14, 5, 'ac_themes', '[[lang:de]]Themes[[lang:en]]Themes[[lang:it]]Temi', 'admincenter.php?site=settings_themes', 3),
+(15, 5, 'ac_startpage', '[[lang:de]]Startseite[[lang:en]]Start Page[[lang:it]]Pagina Principale', 'admincenter.php?site=settings_startpage', 5),
+(16, 5, 'ac_static', '[[lang:de]]Statische Seiten[[lang:en]]Static Pages[[lang:it]]Pagine Statiche', 'admincenter.php?site=settings_static', 6),
+(17, 5, 'ac_imprint', '[[lang:de]]Impressum[[lang:en]]Imprint[[lang:it]]Impronta Editoriale', 'admincenter.php?site=settings_imprint', 7),
+(18, 5, 'ac_privacy_policy', '[[lang:de]]Datenschutz-Bestimmungen[[lang:en]]Privacy Policy[[lang:it]]Informativa sulla Privacy', 'admincenter.php?site=settings_privacy_policy', 8),
+(19, 6, 'ac_plugin_manager', '[[lang:de]]Plugin & Widget Manager[[lang:en]]Plugin & Widget Manager[[lang:it]]Gestore di Plugin e Widget', 'admincenter.php?site=plugin_manager', 1),
+(20, 6, 'ac_plugin_installer', '[[lang:de]]Plugin Installer[[lang:en]]Plugin Installer[[lang:it]]Installazione Plugin', 'admincenter.php?site=plugin_installer', 2),
+(21, 1, 'ac_editlang', '[[lang:de]]Spracheditor[[lang:en]]Language Editor[[lang:it]]Editor di Linguaggi', 'admincenter.php?site=editlang', 11),
+(22, 7, 'footer', '[[lang:de]]Footer[[lang:en]]Footer[[lang:it]]Piè di pagina', 'admincenter.php?site=fotter', 0),
+(23, 3, 'ac_admin_security', '[[lang:de]]Admin Security[[lang:en]]Admin Security[[lang:it]]Sicurezza Admin', 'admincenter.php?site=admin_security', 2),
+(24, 3, 'ac_user_roles', '[[lang:de]]User Roles[[lang:en]]User Roles[[lang:it]]Ruoli Utente', 'admincenter.php?site=user_roles', 3),
+(25, 3, 'role_permissions', 'Role Permissions.php', 'admincenter.php?site=admin_role_permissions', 1),
+(26, 1, 'ac_db_stats', 'Datenbank Statistik', 'admincenter.php?site=db_stats', 1),
+(27, 3, 'ac_admin_log', 'Admin Log', 'admincenter.php?site=admin_log', 1),
+(28, 1, 'ac_update_core', 'Update Core', 'admincenter.php?site=update_core', 1);
 -- Ende der Tabelle 'navigation_dashboard_links'
 
 -- Tabellenstruktur für Tabelle `navigation_website_main`
@@ -415,28 +411,29 @@ INSERT IGNORE INTO `settings_buttons` (`buttonID`, `name`, `modulname`, `active`
 
 -- Tabellenstruktur für Tabelle `settings_imprint`
 CREATE TABLE IF NOT EXISTS `settings_imprint` (
-  `imprintID` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `imprint` text NOT NULL,
-  `disclaimer_text` text NOT NULL
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `type` VARCHAR(255) NOT NULL,
+    `company_name` VARCHAR(255) NOT NULL,
+    `represented_by` VARCHAR(255) NOT NULL,
+    `tax_id` VARCHAR(255) DEFAULT NULL,
+    `email` VARCHAR(255) NOT NULL,
+    `website` VARCHAR(255) DEFAULT NULL,
+    `phone` VARCHAR(50) DEFAULT NULL,
+    `disclaimer` TEXT DEFAULT NULL,
+    PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `settings_imprint` (`imprint`, `disclaimer_text`) VALUES
-('[[lang:de]]Impressum in deutscher Sprache.<br />
-<span style="color:#c0392b"><strong>Konfigurieren Sie bitte Ihr Impressum!</strong></span>
-
-[[lang:en]]Imprint in English.<br />
-<span style="color:#c0392b"><strong>Please configure your imprint!</strong></span>
-
-[[lang:it]]Impronta Editoriale in Italiano.<br />
-<span style="color:#c0392b"><strong>Si prega di configurare l''impronta!</strong></span>',
-'[[lang:de]]Haftungsausschluss in deutscher Sprache.<br />
-<span style="color:#c0392b"><strong>Konfigurieren Sie bitte Ihr Haftungsausschluss! </strong></span>
-
-[[lang:en]]Disclaimer in English.<br />
-<span style="color:#c0392b"><strong>Please configure your disclaimer!</strong></span>
-
-[[lang:it]]Dichiarazione di non Responsabilità in Italiano.<br />
-<span style="color:#c0392b"><strong>Si prega di configurare la Dichiarazione di non Responsabilità!</strong></span>');
+INSERT IGNORE INTO `settings_imprint` (`type`, `company_name`, `represented_by`, `tax_id`, `email`, `website`, `phone`, `disclaimer`)
+VALUES (
+    '[[lang:de]] Einzelunternehmen [[lang:en]] Sole proprietorship [[lang:it]] Ditta individuale',
+    '[[lang:de]] Meine Firma GmbH [[lang:en]] My Company Ltd. [[lang:it]] La mia azienda Srl',
+    '[[lang:de]] Max Mustermann [[lang:en]] John Doe [[lang:it]] Mario Rossi',
+    '[[lang:de]] DE123456789 [[lang:en]] DE123456789 [[lang:it]] DE123456789',
+    '[[lang:de]] info@example.com [[lang:en]] info@example.com [[lang:it]] info@example.com',
+    '[[lang:de]] https://example.com [[lang:en]] https://example.com [[lang:it]] https://example.com',
+    '[[lang:de]] +49 123 4567890 [[lang:en]] +49 123 4567890 [[lang:it]] +49 123 4567890',
+    '[[lang:de]] Dies ist ein deutscher Haftungsausschluss. [[lang:en]] This is an English disclaimer. [[lang:it]] Questo è un disclaimer italiano.'
+);
 -- Ende der Tabelle 'settings_imprint'
 
 -- Tabellenstruktur für Tabelle `settings_languages`
@@ -562,11 +559,11 @@ INSERT INTO `settings_plugins_widget_settings` (`id`, `side`, `position`, `modul
 -- Tabellenstruktur für Tabelle `settings_privacy_policy`
 CREATE TABLE IF NOT EXISTS `settings_privacy_policy` (
   `privacy_policyID` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `date` int(14) NOT NULL,
+  `date` DATETIME NOT NULL,
   `privacy_policy_text` mediumtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `settings_privacy_policy` (`privacy_policyID`, `date`, `privacy_policy_text`) VALUES (1, UNIX_TIMESTAMP(), '[[lang:de]] Datenschutz-Bestimmungen in deutscher Sprache.<br /><span style="color:#c0392b"><strong>Konfigurieren Sie bitte Ihre Datenschutz-Bestimmungen!</strong></span><br />[[lang:en]] Privacy Policy in English.<br /><span style="color:#c0392b"><strong>Please configure your Privacy Policy!</strong></span>[[lang:it]] Informativa sulla Privacy in Italiano.<br /><span style="color:#c0392b"><strong>Si prega di configurare l’Informativa sulla Privacy!</strong></span>');
+INSERT INTO `settings_privacy_policy` (`privacy_policyID`, `date`, `privacy_policy_text`) VALUES (1, NOW(), '[[lang:de]] Datenschutz-Bestimmungen in deutscher Sprache.<br /><span style="color:#c0392b"><strong>Konfigurieren Sie bitte Ihre Datenschutz-Bestimmungen!</strong></span><br />[[lang:en]] Privacy Policy in English.<br /><span style="color:#c0392b"><strong>Please configure your Privacy Policy!</strong></span>[[lang:it]] Informativa sulla Privacy in Italiano.<br /><span style="color:#c0392b"><strong>Si prega di configurare l’Informativa sulla Privacy!</strong></span>');
 -- Ende der Tabelle 'settings_privacy_policy'
 
 -- Tabellenstruktur für Tabelle `settings_recaptcha`
@@ -704,8 +701,8 @@ CREATE TABLE IF NOT EXISTS `tags` (
 -- Tabellenstruktur für Tabelle `users`
 CREATE TABLE IF NOT EXISTS `users` (
   `userID` int(11) NOT NULL AUTO_INCREMENT,
-  `registerdate` datetime NOT NULL DEFAULT current_timestamp(),
-  `lastlogin` datetime DEFAULT NULL,
+  `registerdate` timestamp NOT NULL DEFAULT current_timestamp(),
+  `lastlogin` timestamp NOT NULL DEFAULT current_timestamp(),
   `password_hash` varchar(255) NOT NULL,
   `password_pepper` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
@@ -939,41 +936,6 @@ CREATE TABLE IF NOT EXISTS `user_register_attempts` (
   KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 -- Ende der Tabelle 'user_register_attempts'
-
--- Tabellenstruktur für Tabelle `user_groups`
-/*CREATE TABLE IF NOT EXISTS `user_groups` (
-  `usgID` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `userID` int(11) NOT NULL DEFAULT '0',
-  `news` int(1) NOT NULL DEFAULT '0',
-  `news_writer` int(1) NOT NULL,
-  `newsletter` int(1) NOT NULL DEFAULT '0',
-  `polls` int(1) NOT NULL DEFAULT '0',
-  `forum` int(1) NOT NULL DEFAULT '0',
-  `moderator` int(1) NOT NULL DEFAULT '0',
-  `clanwars` int(1) NOT NULL DEFAULT '0',
-  `feedback` int(1) NOT NULL DEFAULT '0',
-  `user` int(1) NOT NULL DEFAULT '0',
-  `page` int(1) NOT NULL DEFAULT '0',
-  `files` int(1) NOT NULL DEFAULT '0',
-  `cash` int(1) NOT NULL DEFAULT '0',
-  `gallery` int(1) NOT NULL,
-  `super` int(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB;
-
-INSERT INTO `user_groups` (`usgID`, `userID`, `news`, `news_writer`, `newsletter`, `polls`, `forum`, `moderator`, `clanwars`, `feedback`, `user`, `page`, `files`, `cash`, `gallery`, `super`) VALUES
-(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);*/
--- Ende der Tabelle 'user_groups'
-
--- Tabellenstruktur für Tabelle `user_forum_groups`
-/*CREATE TABLE IF NOT EXISTS `user_forum_groups` (
-  `usfgID` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `userID` int(11) NOT NULL DEFAULT '0',
-  `group_flag` int(1) NOT NULL
-) ENGINE=InnoDB;
-
-INSERT INTO `user_forum_groups` (`usfgID`, `userID`, `group_flag`) VALUES
-(1, 1, 1); */
--- Ende der Tabelle 'user_forum_groups'
 
 -- Tabellenstruktur für Tabelle `user_username`
 CREATE TABLE IF NOT EXISTS `user_username` (

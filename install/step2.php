@@ -9,72 +9,17 @@ set_time_limit(300);
 ini_set('memory_limit', '512M');
 
 #$updateUrl = "https://update.webspell-rm.de/releases/2.1.7/cms.zip";
+$messages = [];
 
 
-// URL der ZIP-Datei von GitHub
+
+
+
 $updateUrl = "https://github.com/Webspell-RM/Webspell-RM-3.0-Next-Generation/archive/refs/heads/main.zip";
-// Temporärer Pfad für das ZIP-Archiv
 $tempZipPath = __DIR__ . "/main.zip";
-// Zielpfad für die Extraktion (Webroot)
-$extractPath = dirname(__DIR__);
-
-// Schritt 1: ZIP-Datei von GitHub herunterladen
-file_put_contents($tempZipPath, fopen($updateUrl, 'r'));
-
-// Schritt 2: ZIP-Datei extrahieren
-$zip = new ZipArchive;
-if ($zip->open($tempZipPath) === TRUE) {
-    // Extrahiere alle Dateien in das temporäre Verzeichnis
-    $zip->extractTo(__DIR__);
-    $zip->close();
-    
-    echo "ZIP-Datei erfolgreich extrahiert.\n";
-
-    // Schritt 3: Webroot-Dateien kopieren
-    // Der Ordner, der aus der ZIP-Datei extrahiert wurde, hat den Namen "Webspell-RM-3.0-Next-Generation-main"
-    $extractedDir = __DIR__ . "/Webspell-RM-3.0-Next-Generation-main";
-    
-    if (is_dir($extractedDir)) {
-        // Durch alle Dateien und Ordner im extrahierten Verzeichnis iterieren
-        $iterator = new RecursiveIteratorIterator(
-            new RecursiveDirectoryIterator($extractedDir),
-            RecursiveIteratorIterator::LEAVES_ONLY
-        );
-
-        foreach ($iterator as $fileinfo) {
-            if ($fileinfo->isFile()) {
-                // Quell- und Zielpfad
-                $sourceFile = $fileinfo->getRealPath();
-                $relativePath = substr($sourceFile, strlen($extractedDir) + 1);
-                $targetFile = $extractPath . "/" . $relativePath;
-                
-                // Zielverzeichnis erstellen, falls es nicht existiert
-                $targetDir = dirname($targetFile);
-                if (!is_dir($targetDir)) {
-                    mkdir($targetDir, 0777, true);
-                }
-
-                // Datei auf den Webserver kopieren
-                if (!copy($sourceFile, $targetFile)) {
-                    echo "Fehler beim Kopieren der Datei: $sourceFile\n";
-                }
-            }
-        }
-
-        echo "Webroot-Dateien erfolgreich auf den Webserver kopiert.\n";
-    } else {
-        echo "Fehler: Das extrahierte Verzeichnis wurde nicht gefunden.\n";
-    }
-
-    // ZIP-Datei löschen
-    unlink($tempZipPath);
-
-} else {
-    echo "Fehler beim Öffnen der ZIP-Datei.\n";
-}
-
-
-
+$extractPath = __DIR__; // /install/
+$webrootPath = dirname(__DIR__); // Webroot
+$extractedDir = __DIR__ . "/Webspell-RM-3.0-Next-Generation-main";
 $messages = [];
 
 function addMessage(&$messages, $message, $type = "info", $icon = "ℹ️") {
@@ -85,28 +30,56 @@ function addMessage(&$messages, $message, $type = "info", $icon = "ℹ️") {
     ];
 }
 
-addMessage($messages, "📥 Lade CMS herunter...");
-
-$zipData = @file_get_contents($updateUrl);
-if ($zipData === false) {
-    addMessage($messages, "Fehler: Download fehlgeschlagen. Prüfe URL oder Netzwerkverbindung.", "danger", "❌");
-    renderTemplateAndExit($messages);
+function chmodRecursive($path, $perm = 0777) {
+    if (!file_exists($path)) return;
+    $iterator = new RecursiveIteratorIterator(
+        new RecursiveDirectoryIterator($path, RecursiveDirectoryIterator::SKIP_DOTS),
+        RecursiveIteratorIterator::SELF_FIRST
+    );
+    foreach ($iterator as $item) {
+        chmod($item->getPathname(), $perm);
+    }
+    chmod($path, $perm);
 }
 
+function deleteFolder(string $folder): bool {
+    if (!is_dir($folder)) return false;
+    $files = new RecursiveIteratorIterator(
+        new RecursiveDirectoryIterator($folder, RecursiveDirectoryIterator::SKIP_DOTS),
+        RecursiveIteratorIterator::CHILD_FIRST
+    );
+    foreach ($files as $file) {
+        $filePath = $file->getPathname();
+        if ($file->isDir()) {
+            rmdir($filePath);
+        } else {
+            unlink($filePath);
+        }
+    }
+    return rmdir($folder);
+}
+
+// Schritt 1: ZIP herunterladen
+addMessage($messages, "📥 Lade CMS von GitHub herunter...");
+$zipData = @file_get_contents($updateUrl);
+if ($zipData === false) {
+    addMessage($messages, "❌ Fehler beim Download der ZIP-Datei.", "danger", "❌");
+    renderTemplateAndExit($messages);
+}
 file_put_contents($tempZipPath, $zipData);
 
+// Schritt 2: Entpacken in /install/
 $zip = new ZipArchive;
 if ($zip->open($tempZipPath) === TRUE) {
-
-    addMessage($messages, "📦 Entpacke CMS-Dateien...");
-
-    // Sicherheitsprüfung auf Zip-Slip
+    addMessage($messages, "📦 Entpacke CMS...");
+    
+    // Sicherheitsprüfung
     for ($i = 0; $i < $zip->numFiles; $i++) {
         $entry = $zip->getNameIndex($i);
         if (strpos($entry, '..') !== false) {
             $zip->close();
             unlink($tempZipPath);
-            addMessage($messages, "Sicherheitsfehler im ZIP-Archiv.", "danger", "❌");
+            addMessage($messages, "❌ Sicherheitsproblem im ZIP-Archiv (Zip-Slip)", "danger", "⚠️");
             renderTemplateAndExit($messages);
         }
     }
@@ -114,17 +87,58 @@ if ($zip->open($tempZipPath) === TRUE) {
     $zip->extractTo($extractPath);
     $zip->close();
     unlink($tempZipPath);
+    addMessage($messages, "✅ ZIP-Datei entpackt.");
 
-    addMessage($messages, "CMS erfolgreich installiert. Du wirst weitergeleitet...", "success", "✅");
+    // Schritt 3: Dateien aus extrahiertem Ordner in den Webroot verschieben
+    if (is_dir($extractedDir)) {
+        $iterator = new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator($extractedDir, RecursiveDirectoryIterator::SKIP_DOTS),
+            RecursiveIteratorIterator::SELF_FIRST
+        );
 
-    // Weiterleitung zu step2.php nach 3 Sekunden
+        foreach ($iterator as $item) {
+            $sourcePath = $item->getPathname();
+            $relativePath = substr($sourcePath, strlen($extractedDir) + 1);
+            $targetPath = $webrootPath . '/' . $relativePath;
+
+            if ($item->isDir()) {
+                if (!is_dir($targetPath)) {
+                    mkdir($targetPath, 0777, true);
+                }
+            } else {
+                if (!copy($sourcePath, $targetPath)) {
+                    addMessage($messages, "❌ Fehler beim Kopieren von: $sourcePath", "danger");
+                }
+            }
+        }
+
+        addMessage($messages, "✅ Dateien erfolgreich in den Webroot verschoben.");
+
+        // Schritt 4: Rechte setzen & temporären Ordner löschen
+        chmodRecursive($extractedDir);
+        if (deleteFolder($extractedDir)) {
+            addMessage($messages, "🗑️ Temporärer Ordner gelöscht: $extractedDir");
+        } else {
+            addMessage($messages, "⚠️ Ordner konnte nicht vollständig gelöscht werden: $extractedDir", "warning");
+        }
+    } else {
+        addMessage($messages, "❌ Fehler: Extrahierter Ordner nicht gefunden: $extractedDir", "danger");
+    }
+
+    addMessage($messages, "✅ Update abgeschlossen. Du wirst gleich weitergeleitet...", "success", "✅");
     $redirect = true;
 
 } else {
-    addMessage($messages, "Fehler beim Öffnen des ZIP-Archivs.", "danger", "❌");
+    addMessage($messages, "❌ Fehler beim Öffnen der ZIP-Datei.", "danger", "❌");
 }
 
 renderTemplateAndExit($messages, $redirect ?? false);
+
+
+
+
+
+
 
 
 // TEMPLATE
@@ -139,7 +153,7 @@ function renderTemplateAndExit($messages, $redirect = false) {
     <link href="/install/css/bootstrap.min.css" rel="stylesheet">
     <link href="/install/css/installer.css" rel="stylesheet">
     <?php if ($redirect): ?>
-        <meta http-equiv="refresh" content="3;url=step3.php">
+        <meta http-equiv="refresh" content="5;url=step3.php">
     <?php endif; ?>    
 </head>
 <body>
