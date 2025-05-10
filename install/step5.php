@@ -176,7 +176,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <?= $success ?><br><br>
                 <!--<a class="btn btn-primary btn-lg w-100" href="step6.php"><strong>Weiter zu Schritt 6 (Abschluss)</strong></a>-->
                 <div class="alert alert-success text-center" role="alert">
-                    <strong>Weiter zu Schritt 6 (Abschluss)</strong>
+                    <strong>Du wirst in wenigen Sekunden automatisch zu <strong>Schritt 6</strong> weitergeleitet. (Abschluss)</strong>
                 </div>
             </div>
         <?php endif; ?>
