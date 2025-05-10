@@ -422,18 +422,6 @@ CREATE TABLE IF NOT EXISTS `settings_imprint` (
     `disclaimer` TEXT DEFAULT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-INSERT IGNORE INTO `settings_imprint` (`type`, `company_name`, `represented_by`, `tax_id`, `email`, `website`, `phone`, `disclaimer`)
-VALUES (
-    '[[lang:de]] Einzelunternehmen [[lang:en]] Sole proprietorship [[lang:it]] Ditta individuale',
-    '[[lang:de]] Meine Firma GmbH [[lang:en]] My Company Ltd. [[lang:it]] La mia azienda Srl',
-    '[[lang:de]] Max Mustermann [[lang:en]] John Doe [[lang:it]] Mario Rossi',
-    '[[lang:de]] DE123456789 [[lang:en]] DE123456789 [[lang:it]] DE123456789',
-    '[[lang:de]] info@example.com [[lang:en]] info@example.com [[lang:it]] info@example.com',
-    '[[lang:de]] https://example.com [[lang:en]] https://example.com [[lang:it]] https://example.com',
-    '[[lang:de]] +49 123 4567890 [[lang:en]] +49 123 4567890 [[lang:it]] +49 123 4567890',
-    '[[lang:de]] Dies ist ein deutscher Haftungsausschluss. [[lang:en]] This is an English disclaimer. [[lang:it]] Questo è un disclaimer italiano.'
-);
 -- Ende der Tabelle 'settings_imprint'
 
 -- Tabellenstruktur für Tabelle `settings_languages`
@@ -551,7 +539,7 @@ CREATE TABLE IF NOT EXISTS `settings_plugins_widget_settings` (
   `sort` int(11) DEFAULT '1'
 ) ENGINE=InnoDB;
 
-INSERT INTO `settings_plugins_widget_settings` (`id`, `side`, `position`, `modulname`, `themes_modulname`, `widgetname`, `widgetdatei`, `activated`, `sort`) VALUES
+INSERT IGNORE INTO `settings_plugins_widget_settings` (`id`, `side`, `position`, `modulname`, `themes_modulname`, `widgetname`, `widgetdatei`, `activated`, `sort`) VALUES
 (1, '', 'navigation_widget', 'navigation', 'default', 'Navigation', 'widget_navigation', 1, 0),
 (2, '', 'footer_widget', 'footer', 'default', 'Footer Easy', 'widget_footer_easy', 1, 0);
 -- Ende der Tabelle 'settings_plugins_widget_settings'
@@ -563,7 +551,7 @@ CREATE TABLE IF NOT EXISTS `settings_privacy_policy` (
   `privacy_policy_text` mediumtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `settings_privacy_policy` (`privacy_policyID`, `date`, `privacy_policy_text`) VALUES (1, NOW(), '[[lang:de]] Datenschutz-Bestimmungen in deutscher Sprache.<br /><span style="color:#c0392b"><strong>Konfigurieren Sie bitte Ihre Datenschutz-Bestimmungen!</strong></span><br />[[lang:en]] Privacy Policy in English.<br /><span style="color:#c0392b"><strong>Please configure your Privacy Policy!</strong></span>[[lang:it]] Informativa sulla Privacy in Italiano.<br /><span style="color:#c0392b"><strong>Si prega di configurare l’Informativa sulla Privacy!</strong></span>');
+INSERT IGNORE INTO `settings_privacy_policy` (`privacy_policyID`, `date`, `privacy_policy_text`) VALUES (1, NOW(), '[[lang:de]] Datenschutz-Bestimmungen in deutscher Sprache.<br /><span style="color:#c0392b"><strong>Konfigurieren Sie bitte Ihre Datenschutz-Bestimmungen!</strong></span><br />[[lang:en]] Privacy Policy in English.<br /><span style="color:#c0392b"><strong>Please configure your Privacy Policy!</strong></span>[[lang:it]] Informativa sulla Privacy in Italiano.<br /><span style="color:#c0392b"><strong>Si prega di configurare l’Informativa sulla Privacy!</strong></span>');
 -- Ende der Tabelle 'settings_privacy_policy'
 
 -- Tabellenstruktur für Tabelle `settings_recaptcha`
@@ -595,7 +583,7 @@ CREATE TABLE IF NOT EXISTS `settings_social_media` (
   `steam` varchar(255) NOT NULL
 ) ENGINE=InnoDB;
 
-INSERT INTO `settings_social_media` (`socialID`, `twitch`, `facebook`, `twitter`, `youtube`, `rss`, `vine`, `flickr`, `linkedin`, `instagram`, `since`, `gametracker`, `discord`, `steam`) VALUES
+INSERT IGNORE INTO `settings_social_media` (`socialID`, `twitch`, `facebook`, `twitter`, `youtube`, `rss`, `vine`, `flickr`, `linkedin`, `instagram`, `since`, `gametracker`, `discord`, `steam`) VALUES
 (1, 'https://www.twitch.tv/pulsradiocom', 'https://www.facebook.com/WebspellRM', 'https://twitter.com/webspell_rm', 'https://www.youtube.com/channel/UCE5yTn9ljzSnC_oMp9Jnckg', '-', '-', '-', '-', '-', '2025', '85.14.228.228:28960', 'https://www.discord.gg/kErxPxb', '-');
 -- Ende der Tabelle 'settings_social_media'
 
@@ -604,58 +592,84 @@ CREATE TABLE IF NOT EXISTS `settings_startpage` (
   `pageID` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `title` varchar(255) NOT NULL,
   `startpage_text` longtext NOT NULL,
-  `creation_date` int(14) NOT NULL DEFAULT 0,
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
   `displayed` varchar(255) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO settings_startpage (title, startpage_text, creation_date, displayed)
-VALUES 
-('Startseite', 
-'<h1>Webspell | RM 2.1.7</h1>
+INSERT IGNORE INTO settings_startpage (`pageID`, `title`, `startpage_text`, `date`, `displayed`) VALUES
+(1, 'Next-Generation', 
+'<div class=\"container px-4 py-5\" id=\"icon-grid\">
+  <h6 class=\"pb-2 border-bottom\">Webspell RM (Next-Generation)</h6>
+  <small>Das Bootstrap CMS der Zukunft</small>
+  <div class=\"row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5\">
 
-[[lang:de]]
-<p>Herzlich willkommen bei <strong>Webspell | RM</strong> – dem modernen und flexiblen CMS für Gamer, Clans und Communities!</p>
-<p>Webspell | RM ist das perfekte Content-Management-System für alle, die eine professionelle und maßgeschneiderte Website für ihre Gaming-Community, Clan oder Organisation erstellen möchten. Mit unserer leistungsstarken Software kannst du eine Plattform aufbauen, die nicht nur funktional, sondern auch ansprechend und einfach zu verwalten ist.</p>
-<p><strong>Die Version 2.1.7</strong> bringt zahlreiche Verbesserungen in den Bereichen Design, Sicherheit und Benutzerfreundlichkeit. Die neue Version bietet eine noch stabilere Grundlage, auf der du deine Community-Seite aufbauen kannst, mit einer Vielzahl an Tools und Funktionen, die speziell für die Bedürfnisse von Gamern und Clan-Organisationen entwickelt wurden. Egal, ob du eine <strong>Teamseite</strong>, eine <strong>Turnierplattform</strong> oder eine <strong>Gilden-Website</strong> erstellen möchtest – mit Webspell | RM hast du alle nötigen Werkzeuge, um deine Seite genau nach deinen Vorstellungen zu gestalten.</p>
-<ul>
-<li><strong>Anpassbares Design</strong>: Wähle aus einer Vielzahl von Designs oder erstelle dein eigenes Layout, das perfekt zu deiner Community passt.</li>
-<li><strong>Benutzerfreundliches Backend</strong>: Das Admin-Panel wurde so optimiert, dass du alle Funktionen schnell und einfach nutzen kannst. Verwaltete Mitglieder, Turniere, News und vieles mehr auf einer zentralen Oberfläche.</li>
-<li><strong>Sicherheit</strong>: Mit der neuesten Version erhältst du zusätzliche Sicherheitsfunktionen, die deine Daten und die deiner Nutzer noch besser schützen.</li>
-<li><strong>Mehrsprachigkeit</strong>: Webspell | RM unterstützt mehrere Sprachen, sodass du deine Community weltweit erreichen kannst.</li>
-</ul>
-<p>Ob du gerade erst mit deiner Community startest oder schon eine etablierte Gruppe hast, Webspell | RM bietet dir alles, was du brauchst, um eine beeindruckende und funktionale Website zu erstellen. Der flexible Aufbau und die Vielzahl an Erweiterungen ermöglichen es dir, deine Seite mit neuen Features auszustatten, wann immer du es brauchst.</p>
+    <div class=\"col d-flex align-items-start\">
+      <i class=\"bi bi-house bi-color flex-shrink-0 me-3\" style=\"font-size: 2rem;\"></i>
+      <div>
+        <h3 class=\"fw-bold mb-0 fs-4\">Next-Generation</h3>
+        <p>Objektorientierte Programmierung<br>Einfacher, sauberer Code</p>
+      </div>
+    </div>
 
-<p><strong>Probier es aus!</strong> Auf unserer <a href="https://www.webspell-templates.de/" target="_blank">offiziellen Website</a> findest du alle Informationen, die du benötigst, um mit Webspell | RM loszulegen. Und mit der <a href="https://www.webspell-templates.de/" target="_blank">Live-Demo</a> kannst du die Funktionen der Software in Echtzeit erleben.</p>
+    <div class=\"col d-flex align-items-start\">
+      <i class=\"bi bi-bootstrap bi-color flex-shrink-0 me-3\" style=\"font-size: 2rem;\"></i>
+      <div>
+        <h3 class=\"fw-bold mb-0 fs-4\">Bootstrap</h3>
+        <p>Vordefinierte Klassen für einfache Layout-Optionen, sowie umfangreiche Mixins für die Erstellung von semantischeren Layouts.</p>
+      </div>
+    </div>
 
-[[lang:en]]
-<p>Welcome to <strong>Webspell | RM</strong> – the modern and flexible CMS for gamers, clans, and communities!</p>
-<p>Webspell | RM is the perfect content management system for anyone looking to create a professional and customized website for their gaming community, clan, or organization. With our powerful software, you can build a platform that is not only functional but also visually appealing and easy to manage.</p>
-<p><strong>Version 2.1.7</strong> brings numerous improvements in design, security, and user-friendliness. The new version offers an even more stable foundation on which you can build your community site, with a variety of tools and features specifically developed for gamers and clan organizations. Whether you\'re creating a <strong>team page</strong>, a <strong>tournament platform</strong>, or a <strong>guild website</strong> – with Webspell | RM, you have all the necessary tools to design your site exactly the way you want.</p>
-<ul>
-<li><strong>Customizable Design</strong>: Choose from a variety of designs or create your own layout that perfectly fits your community.</li>
-<li><strong>User-Friendly Backend</strong>: The admin panel has been optimized for quick and easy access to all features. Manage members, tournaments, news, and much more from a central interface.</li>
-<li><strong>Security</strong>: With the latest version, you get additional security features that better protect your data and that of your users.</li>
-<li><strong>Multilingual Support</strong>: Webspell | RM supports multiple languages, allowing you to reach your community worldwide.</li>
-</ul>
-<p>Whether you\'re just starting out with your community or already have an established group, Webspell | RM gives you everything you need to build an impressive and functional website. The flexible structure and a wide range of add-ons make it easy to enhance your site with new features whenever you need them.</p>
+    <div class=\"col d-flex align-items-start\">
+      <i class=\"bi bi-layout-text-window-reverse bi-color flex-shrink-0 me-3\" style=\"font-size: 2rem;\"></i>
+      <div>
+        <h3 class=\"fw-bold mb-0 fs-4\">Frische Layouts</h3>
+        <p>Mit Bootstrap 5 kann man einfach neue Layouts erstellt!</p>
+      </div>
+    </div>
 
-<p><strong>Give it a try!</strong> Visit our <a href="https://www.webspell-templates.de/" target="_blank">official website</a> for all the information you need to get started with Webspell | RM. And with the <a href="https://www.webspell-templates.de/" target="_blank">live demo</a>, you can experience the software\'s features in real-time.</p>
+    <div class=\"col d-flex align-items-start\">
+      <i class=\"bi bi-cloud-download bi-color flex-shrink-0 me-3\" style=\"font-size: 2rem;\"></i>
+      <div>
+        <h3 class=\"fw-bold mb-0 fs-4\">Kostenlos</h3>
+        <p>Wie immer ist Webspell-RM kostenlos!</p>
+      </div>
+    </div>
 
-[[lang:it]]
-<p>Benvenuto su <strong>Webspell | RM</strong> – il CMS moderno e flessibile per gamer, clan e community!</p>
-<p>Webspell | RM è il sistema di gestione dei contenuti perfetto per chi desidera creare un sito web professionale e personalizzato per la propria community di gamer, clan o organizzazioni. Con il nostro potente software, puoi costruire una piattaforma che non solo è funzionale, ma anche visivamente attraente e facile da gestire.</p>
-<p><strong>La versione 2.1.7</strong> offre numerosi miglioramenti in termini di design, sicurezza e facilità d\'uso. La nuova versione fornisce una base ancora più stabile su cui costruire il sito della tua community, con una varietà di strumenti e funzionalità specificamente sviluppati per gamer e organizzazioni di clan. Che tu stia creando una <strong>pagina del team</strong>, una <strong>piattaforma per tornei</strong> o un <strong>sito per la gilda</strong>, con Webspell | RM hai tutti gli strumenti necessari per progettare il tuo sito come lo desideri.</p>
-<ul>
-<li><strong>Design personalizzabile</strong>: Scegli tra una varietà di design o crea il tuo layout che si adatta perfettamente alla tua community.</li>
-<li><strong>Backend intuitivo</strong>: Il pannello di amministrazione è stato ottimizzato per un facile accesso a tutte le funzionalità. Gestisci membri, tornei, notizie e molto altro da un\'interfaccia centrale.</li>
-<li><strong>Sicurezza</strong>: Con la nuova versione, ricevi funzionalità di sicurezza aggiuntive che proteggono meglio i tuoi dati e quelli dei tuoi utenti.</li>
-<li><strong>Supporto multilingue</strong>: Webspell | RM supporta più lingue, permettendoti di raggiungere la tua community in tutto il mondo.</li>
-</ul>
-<p>Che tu stia appena iniziando con la tua community o che tu abbia già un gruppo consolidato, Webspell | RM ti offre tutto ciò di cui hai bisogno per creare un sito impressionante e funzionale. La struttura flessibile e la vasta gamma di estensioni ti permettono di migliorare il tuo sito con nuove funzionalità ogni volta che ne hai bisogno.</p>
+    <div class=\"col d-flex align-items-start\">
+      <i class=\"bi bi-box-arrow-down bi-color flex-shrink-0 me-3\" style=\"font-size: 2rem;\"></i>
+      <div>
+        <h3 class=\"fw-bold mb-0 fs-4\">Template Installer</h3>
+        <p>Mit bis zu xx Templates erstellst du mit dem Template Installer in wenigen Minuten deine eigene individuelle Website.</p>
+      </div>
+    </div>
 
-<p><strong>Provalo!</strong> Visita il nostro <a href="https://www.webspell-templates.de/" target="_blank">sito ufficiale</a> per tutte le informazioni necessarie per iniziare con Webspell | RM. E con la <a href="https://www.webspell-templates.de/" target="_blank">demo live</a>, puoi provare le funzionalità del software in tempo reale.</p>',
-    UNIX_TIMESTAMP(),
-    '0');
+    <div class=\"col d-flex align-items-start\">
+      <i class=\"bi bi-box-arrow-down bi-color flex-shrink-0 me-3\" style=\"font-size: 2rem;\"></i>
+      <div>
+        <h3 class=\"fw-bold mb-0 fs-4\">Plugin Installer</h3>
+        <p>Wir bieten dir mit über xx Plugins die Möglichkeit, deine Website individuell zu gestalten.</p>
+      </div>
+    </div>
+
+    <div class=\"col d-flex align-items-start\">
+      <i class=\"bi bi-box-arrow-down bi-color flex-shrink-0 me-3\" style=\"font-size: 2rem;\"></i>
+      <div>
+        <h3 class=\"fw-bold mb-0 fs-4\">Update Installer</h3>
+        <p>Bleib Up2Date! Updates jetzt noch einfacher über den Update Installer zu installieren.</p>
+      </div>
+    </div>
+
+    <div class=\"col d-flex align-items-start\">
+      <i class=\"bi bi-toggles2 bi-color flex-shrink-0 me-3\" style=\"font-size: 2rem;\"></i>
+      <div>
+        <h3 class=\"fw-bold mb-0 fs-4\">Dashboard</h3>
+        <p>Hier kann man alles einstellen. reCAPTCHA, Plugins, Templates usw...</p>
+      </div>
+    </div>
+
+  </div>
+</div>', CURRENT_TIMESTAMP, '');
+
 
 -- Ende der Tabelle 'settings_startpage'
 
