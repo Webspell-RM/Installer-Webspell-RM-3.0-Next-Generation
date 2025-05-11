@@ -406,7 +406,7 @@ CREATE TABLE IF NOT EXISTS `settings_buttons` (
 ) ENGINE=InnoDB;
 
 INSERT IGNORE INTO `settings_buttons` (`buttonID`, `name`, `modulname`, `active`, `version`, `button1`, `button2`, `button3`, `button4`, `button5`, `button6`, `button7`, `button8`, `button9`, `button10`, `button11`, `button12`, `button13`, `button14`, `button15`, `button16`, `button17`, `button18`, `button19`, `button20`, `button21`, `button22`, `button23`, `button24`, `button25`, `button26`, `button27`, `button28`, `button29`, `button30`, `button31`, `button32`, `button33`, `button34`, `button35`, `button36`, `button37`, `button38`, `button39`, `button40`, `button41`, `button42`, `btn_border_radius`) VALUES
-(81, 'Default', 'default', 0, '0.3', 'rgb(254,130,29)', 'rgb(196,89,1)', 'rgb(255,255,255)', 'rgb(254,130,29)', 'rgb(196,89,1)', 'rgb(108,117,125)', 'rgb(90,98,104)', 'rgb(255,255,255)', 'rgb(108,117,125)', 'rgb(84,91,98)', 'rgb(40,167,69)', 'rgb(33,136,56)', 'rgb(255,255,255)', 'rgb(40,167,69)', 'rgb(30,126,52)', 'rgb(220,53,69)', 'rgb(200,35,51)', 'rgb(255,255,255)', 'rgb(220,53,69)', 'rgb(189,33,48)', 'rgb(255,193,7)', 'rgb(224,168,0)', 'rgb(33,37,41)', 'rgb(255,193,7)', 'rgb(211,158,0)', 'rgb(23,162,184)', 'rgb(19,132,150)', 'rgb(255,255,255)', 'rgb(23,162,184)', 'rgb(17,122,139)', 'rgb(248,249,250)', 'rgb(226,230,234)', 'rgb(33,37,41)', 'rgb(248,249,250)', 'rgb(218,224,229)', 'rgb(52,58,64)', 'rgb(35,39,43)', 'rgb(255,255,255)', 'rgb(52,58,64)', 'rgb(29,33,36)', 'rgb(254,130,29)', 'rgb(196,89,1)', '0px');
+(1, 'Default', 'default', 0, '0.3', 'rgb(254,130,29)', 'rgb(196,89,1)', 'rgb(255,255,255)', 'rgb(254,130,29)', 'rgb(196,89,1)', 'rgb(108,117,125)', 'rgb(90,98,104)', 'rgb(255,255,255)', 'rgb(108,117,125)', 'rgb(84,91,98)', 'rgb(40,167,69)', 'rgb(33,136,56)', 'rgb(255,255,255)', 'rgb(40,167,69)', 'rgb(30,126,52)', 'rgb(220,53,69)', 'rgb(200,35,51)', 'rgb(255,255,255)', 'rgb(220,53,69)', 'rgb(189,33,48)', 'rgb(255,193,7)', 'rgb(224,168,0)', 'rgb(33,37,41)', 'rgb(255,193,7)', 'rgb(211,158,0)', 'rgb(23,162,184)', 'rgb(19,132,150)', 'rgb(255,255,255)', 'rgb(23,162,184)', 'rgb(17,122,139)', 'rgb(248,249,250)', 'rgb(226,230,234)', 'rgb(33,37,41)', 'rgb(248,249,250)', 'rgb(218,224,229)', 'rgb(52,58,64)', 'rgb(35,39,43)', 'rgb(255,255,255)', 'rgb(52,58,64)', 'rgb(29,33,36)', 'rgb(254,130,29)', 'rgb(196,89,1)', '0px');
 -- Ende der Tabelle 'settings_buttons'
 
 -- Tabellenstruktur für Tabelle `settings_imprint`
@@ -505,8 +505,8 @@ INSERT INTO `settings_plugins` (`pluginID`, `name`, `modulname`, `info`, `admin_
 (10, 'Register', 'register', '[[lang:de]]Kein Plugin. Bestandteil vom System!!![[lang:en]]No plugin. Part of the system!!![[lang:it]]Nessun plug-in. Parte del sistema!!!', '', 1, '', '', 'register', '', '', '', 1, 0, 1, 0, 'deactivated'),
 (11, 'My Profile', 'myprofile', '[[lang:de]]Kein Plugin. Bestandteil vom System!!![[lang:en]]No plugin. Part of the system!!![[lang:it]]Nessun plug-in. Parte del sistema!!!', '', 1, '', '', 'myprofile', '', '', '', 1, 0, 1, 0, 'deactivated'),
 (12, 'Report', 'report', '[[lang:de]]Kein Plugin. Bestandteil vom System!!![[lang:en]]No plugin. Part of the system!!![[lang:it]]Nessun plug-in. Parte del sistema!!!', '', 1, '', '', 'report', '', '', '', 1, 0, 1, 0, 'deactivated'),
-(13, 'Navigation', 'navigation', '[[lang:de]]Mit diesem Plugin könnt ihr euch die Navigation anzeigen lassen.[[lang:en]]With this plugin you can display navigation.[[lang:it]]Con questo plugin puoi visualizzare la Barra di navigazione predefinita.', '', 1, 'T-Seven', 'https://webspell-rm.de', '', '', '0.3', 'includes/plugins/navigation/', 1, 1, 0, 0, 'deactivated'),
-(14, 'Footer', 'footer', '[[lang:de]]Mit diesem Plugin könnt ihr einen neuen Footer anzeigen lassen.[[lang:en]]With this plugin you can have a new Footer displayed.[[lang:it]]Con questo plugin puoi visualizzare un nuovo piè di pagina.', 'admin_footer', 1, 'T-Seven', 'https://webspell-rm.de', '', '', '0.1', 'includes/plugins/footer/', 1, 1, 0, 0, 'deactivated');
+(13, 'Navigation', 'navigation', '[[lang:de]]Mit diesem Plugin k&ouml;nnt ihr euch die Navigation anzeigen lassen.[[lang:en]]With this plugin you can display navigation.[[lang:it]]Con questo plugin puoi visualizzare la Barra di navigazione predefinita.', '', 1, 'T-Seven', 'https://webspell-rm.de', '', '', '0.3', 'includes/plugins/navigation/', 1, 1, 0, 0, 'deactivated'),
+(14, 'Footer', 'footer', '[[lang:de]]Mit diesem Plugin k&ouml;nnt ihr einen neuen Footer anzeigen lassen.[[lang:en]]With this plugin you can have a new Footer displayed.[[lang:it]]Con questo plugin puoi visualizzare un nuovo piè di pagina.', 'admin_footer', 1, 'T-Seven', 'https://webspell-rm.de', '', '', '0.1', 'includes/plugins/footer/', 1, 1, 0, 0, 'deactivated');
 -- Ende der Tabelle 'settings_plugins'
 
 -- Tabellenstruktur für Tabelle `settings_plugins_widget`
@@ -548,10 +548,11 @@ INSERT IGNORE INTO `settings_plugins_widget_settings` (`id`, `side`, `position`,
 CREATE TABLE IF NOT EXISTS `settings_privacy_policy` (
   `privacy_policyID` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `date` DATETIME NOT NULL,
-  `privacy_policy_text` mediumtext NOT NULL
+  `privacy_policy_text` mediumtext NOT NULL,
+  `editor` int(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT IGNORE INTO `settings_privacy_policy` (`privacy_policyID`, `date`, `privacy_policy_text`) VALUES (1, NOW(), '[[lang:de]] Datenschutz-Bestimmungen in deutscher Sprache.<br /><span style="color:#c0392b"><strong>Konfigurieren Sie bitte Ihre Datenschutz-Bestimmungen!</strong></span><br />[[lang:en]] Privacy Policy in English.<br /><span style="color:#c0392b"><strong>Please configure your Privacy Policy!</strong></span>[[lang:it]] Informativa sulla Privacy in Italiano.<br /><span style="color:#c0392b"><strong>Si prega di configurare l’Informativa sulla Privacy!</strong></span>');
+INSERT IGNORE INTO `settings_privacy_policy` (`privacy_policyID`, `date`, `privacy_policy_text`, `editor`) VALUES (1, NOW(), '[[lang:de]] Datenschutz-Bestimmungen in deutscher Sprache.<br /><span style="color:#c0392b"><strong>Konfigurieren Sie bitte Ihre Datenschutz-Bestimmungen!</strong></span><br />[[lang:en]] Privacy Policy in English.<br /><span style="color:#c0392b"><strong>Please configure your Privacy Policy!</strong></span>[[lang:it]] Informativa sulla Privacy in Italiano.<br /><span style="color:#c0392b"><strong>Si prega di configurare l’Informativa sulla Privacy!</strong></span>', 1);
 -- Ende der Tabelle 'settings_privacy_policy'
 
 -- Tabellenstruktur für Tabelle `settings_recaptcha`
@@ -593,10 +594,10 @@ CREATE TABLE IF NOT EXISTS `settings_startpage` (
   `title` varchar(255) NOT NULL,
   `startpage_text` longtext NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
-  `displayed` varchar(255) DEFAULT '0'
+  `editor` int(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT IGNORE INTO settings_startpage (`pageID`, `title`, `startpage_text`, `date`, `displayed`) VALUES
+INSERT IGNORE INTO settings_startpage (`pageID`, `title`, `startpage_text`, `date`, `editor`) VALUES
 (1, 'Next-Generation', 
 '<div class=\"container px-4 py-5\" id=\"icon-grid\">
   <h6 class=\"pb-2 border-bottom\">Webspell RM (Next-Generation)</h6>
@@ -676,11 +677,12 @@ INSERT IGNORE INTO settings_startpage (`pageID`, `title`, `startpage_text`, `dat
 -- Tabellenstruktur für Tabelle `settings_static`
 CREATE TABLE IF NOT EXISTS `settings_static` (
   `staticID` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `categoryID` int(11) NOT NULL DEFAULT 0,
   `title` varchar(255) NOT NULL,
-  `accesslevel` int(1) NOT NULL,
   `content` text NOT NULL,
   `date` int(14) NOT NULL,
-  `displayed` int(1) DEFAULT '0'
+  `editor` int(1) DEFAULT 0,
+  `access_roles` text DEFAULT NULL
 ) ENGINE=InnoDB;
 -- Ende der Tabelle 'settings_static'
 
@@ -809,7 +811,7 @@ INSERT INTO `user_roles` (`roleID`, `role_name`, `description`, `is_default`) VA
 (11, 'Gast', 'Öffentlicher Besucher ohne Login', 0),
 (12, 'Registrierter Benutzer', 'Angemeldet, aber nicht im Clan', 0),
 (13, 'Ehrenmitglied', 'Ehemalige Mitglieder mit besonderem Status', 0),
-(14, 'Streamer', 'Darf Stream-Ankündigungen posten', 0),
+(14, 'Streamer', 'Darf Stream-Ank&uuml;ndigungen posten', 0),
 (15, 'Designer', 'Erstellt oder pflegt Grafiken und Layouts', 0),
 (16, 'Techniker', 'Hat Zugriff auf technische Einstellungen', 0);
 -- Ende der Tabelle 'user_roles'
@@ -1094,6 +1096,6 @@ CREATE TABLE IF NOT EXISTS `settings_themes` (
 ) ENGINE=InnoDB;
 
 INSERT INTO `settings_themes` (`themeID`, `name`, `modulname`, `pfad`, `version`, `active`, `express_active`, `nav1`, `nav2`, `nav3`, `nav4`, `nav5`, `nav6`, `nav7`, `nav8`, `nav9`, `nav10`, `nav11`, `nav12`, `nav_text_alignment`, `body1`, `body2`, `body3`, `body4`, `body5`, `background_pic`, `border_radius`, `typo1`, `typo2`, `typo3`, `typo4`, `typo5`, `typo6`, `typo7`, `typo8`, `card1`, `card2`, `foot1`, `foot2`, `foot3`, `foot4`, `foot5`, `foot6`, `calendar1`, `calendar2`, `carousel1`, `carousel2`, `carousel3`, `carousel4`, `logo_pic`, `logotext1`, `logotext2`, `reg_pic`, `reg1`, `reg2`, `headlines`, `sort`) VALUES
-(7, 'Default', 'default', 'default', '0.3', 1, '', 'rgb(255,255,255)', '14px', 'rgb(51,51,51)', 'rgb(254,130,29)', 'rgb(254,130,29)', '2px', 'rgb(51,51,51)', 'rgb(196,89,1)', 'rgb(221,221,221)', 'rgb(255,255,255)', 'rgb(221,221,221)', 'rgb(255,255,255)', 'ms-auto', 'Roboto', '13px', 'rgb(255,255,255)', 'rgb(51,51,51)', 'rgb(236,236,236)', '', '0px', '', '', '', 'rgb(254,130,29)', '', '', '', 'rgb(196,89,1)', 'rgb(255,255,255)', 'rgb(221,221,221)', 'rgb(85,85,85)', 'rgb(255,255,255)', 'rgb(255,255,255)', 'rgb(181,179,179)', 'rgb(254,130,29)', 'rgb(255,255,255)', '', '', 'rgb(255,255,255)', 'rgb(254,130,29)', 'rgb(255,255,255)', 'rgb(254,130,29)', 'default_logo.png', '', '', 'default_login_bg.jpg', 'rgb(254,130,29)', 'rgb(255,255,255)', 'headlines_03.css', 1);
+(1, 'Default', 'default', 'default', '0.3', 1, '', 'rgb(255,255,255)', '14px', 'rgb(51,51,51)', 'rgb(254,130,29)', 'rgb(254,130,29)', '2px', 'rgb(51,51,51)', 'rgb(196,89,1)', 'rgb(221,221,221)', 'rgb(255,255,255)', 'rgb(221,221,221)', 'rgb(255,255,255)', 'ms-auto', 'Roboto', '13px', 'rgb(255,255,255)', 'rgb(51,51,51)', 'rgb(236,236,236)', '', '0px', '', '', '', 'rgb(254,130,29)', '', '', '', 'rgb(196,89,1)', 'rgb(255,255,255)', 'rgb(221,221,221)', 'rgb(85,85,85)', 'rgb(255,255,255)', 'rgb(255,255,255)', 'rgb(181,179,179)', 'rgb(254,130,29)', 'rgb(255,255,255)', '', '', 'rgb(255,255,255)', 'rgb(254,130,29)', 'rgb(255,255,255)', 'rgb(254,130,29)', 'default_logo.png', '', '', 'default_login_bg.jpg', 'rgb(254,130,29)', 'rgb(255,255,255)', 'headlines_03.css', 1);
 -- Ende der Tabelle 'settings_themes'
 
