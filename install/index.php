@@ -1,4 +1,33 @@
 <?php
+/**
+ * ─────────────────────────────────────────────────────────────────────────────
+ * Webspell-RM 3.0 - Modern Content & Community Management System
+ * ─────────────────────────────────────────────────────────────────────────────
+ *
+ * @version       3.0
+ * @build         Stable Release
+ * @release       2025
+ * @copyright     © 2018–2025 Webspell-RM | https://www.webspell-rm.de
+ * 
+ * @description   Webspell-RM is a modern open source CMS designed for gaming
+ *                communities, esports teams, and digital projects of any kind.
+ * 
+ * @author        Based on the original WebSPELL Clanpackage by Michael Gruber
+ *                (webspell.at), further developed by the Webspell-RM Team.
+ * 
+ * @license       GNU General Public License (GPL)
+ *                This software is distributed under the terms of the GPL.
+ *                It is strictly prohibited to remove this copyright notice.
+ *                For license details, see: https://www.gnu.org/licenses/gpl.html
+ * 
+ * @support       Support, updates, and plugins available at:
+ *                → Website: https://www.webspell-rm.de
+ *                → Forum:   https://www.webspell-rm.de/forum.html
+ *                → Wiki:    https://www.webspell-rm.de/wiki.html
+ * 
+ * ─────────────────────────────────────────────────────────────────────────────
+ */
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
