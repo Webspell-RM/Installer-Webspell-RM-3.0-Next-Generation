@@ -145,7 +145,7 @@ INSERT INTO `navigation_dashboard_links` (`linkID`, `catID`, `modulname`, `name`
 (11, 3, 'ac_users', '[[lang:de]]Registrierte Benutzer[[lang:en]]Registered Users[[lang:it]]Utenti Registrati', 'admincenter.php?site=users', 1),
 (12, 5, 'ac_webside_navigation', '[[lang:de]]Webseiten Navigation[[lang:en]]Website Navigation[[lang:it]]Menu Navigazione Web', 'admincenter.php?site=webside_navigation', 1),
 (13, 5, 'ac_themes_installer', '[[lang:de]]Themes Installer[[lang:en]]Themes Installer[[lang:it]]Installazione Themes', 'admincenter.php?site=themes_installer', 2),
-(14, 5, 'ac_themes', '[[lang:de]]Themes[[lang:en]]Themes[[lang:it]]Temi', 'admincenter.php?site=settings_themes', 3),
+(14, 5, 'ac_themes', '[[lang:de]]Themes[[lang:en]]Themes[[lang:it]]Temi', 'admincenter.php?site=theme', 3),
 (15, 5, 'ac_startpage', '[[lang:de]]Startseite[[lang:en]]Start Page[[lang:it]]Pagina Principale', 'admincenter.php?site=settings_startpage', 5),
 (16, 5, 'ac_static', '[[lang:de]]Statische Seiten[[lang:en]]Static Pages[[lang:it]]Pagine Statiche', 'admincenter.php?site=settings_static', 6),
 (17, 5, 'ac_imprint', '[[lang:de]]Impressum[[lang:en]]Imprint[[lang:it]]Impronta Editoriale', 'admincenter.php?site=settings_imprint', 7),
@@ -153,7 +153,7 @@ INSERT INTO `navigation_dashboard_links` (`linkID`, `catID`, `modulname`, `name`
 (19, 6, 'ac_plugin_manager', '[[lang:de]]Plugin & Widget Manager[[lang:en]]Plugin & Widget Manager[[lang:it]]Gestore di Plugin e Widget', 'admincenter.php?site=plugin_manager', 1),
 (20, 6, 'ac_plugin_installer', '[[lang:de]]Plugin Installer[[lang:en]]Plugin Installer[[lang:it]]Installazione Plugin', 'admincenter.php?site=plugin_installer', 2),
 (21, 1, 'ac_editlang', '[[lang:de]]Spracheditor[[lang:en]]Language Editor[[lang:it]]Editor di Linguaggi', 'admincenter.php?site=editlang', 11),
-(22, 7, 'footer', '[[lang:de]]Footer[[lang:en]]Footer[[lang:it]]Piè di pagina', 'admincenter.php?site=fotter', 0),
+(22, 7, 'footer_easy', '[[lang:de]]Footer Easy[[lang:en]]Footer Easy[[lang:it]]Piè di pagina Easy', 'admincenter.php?site=admin_footer_easy', 0),
 (23, 3, 'ac_admin_security', '[[lang:de]]Admin Security[[lang:en]]Admin Security[[lang:it]]Sicurezza Admin', 'admincenter.php?site=admin_security', 2),
 (24, 3, 'ac_user_roles', '[[lang:de]]User Roles[[lang:en]]User Roles[[lang:it]]Ruoli Utente', 'admincenter.php?site=user_roles', 3),
 (25, 3, 'role_permissions', 'Role Permissions.php', 'admincenter.php?site=admin_role_permissions', 1),
@@ -202,7 +202,7 @@ INSERT INTO `navigation_website_sub` (`snavID`, `mnavID`, `name`, `modulname`, `
 
 
 -- Tabellenstruktur für Tabelle `plugins_footer`
-CREATE TABLE IF NOT EXISTS `plugins_footer` (
+CREATE TABLE IF NOT EXISTS `plugins_footer_easy` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `link_number` tinyint(1) NOT NULL COMMENT '1–5',
   `copyright_link_name` varchar(255) NOT NULL DEFAULT '',
@@ -212,7 +212,7 @@ CREATE TABLE IF NOT EXISTS `plugins_footer` (
   UNIQUE KEY `link_number` (`link_number`)
 ) ENGINE=InnoDB;
 
-INSERT INTO `plugins_footer` (`id`, `link_number`, `copyright_link_name`, `copyright_link`, `new_tab`) VALUES
+INSERT INTO `plugins_footer_easy` (`id`, `link_number`, `copyright_link_name`, `copyright_link`, `new_tab`) VALUES
 (1, 1, '[[lang:de]]Impressum[[lang:en]]Imprint[[lang:it]]Impronta Editoriale', 'index.php?site=imprint', 0),
 (2, 2, '[[lang:de]]Datenschutz-Bestimmungen[[lang:en]]Privacy Policy[[lang:it]]Informativa sulla Privacy', 'index.php?site=privacy_policy', 0),
 (3, 3, '[[lang:de]]Kontakt[[lang:en]]Contact[[lang:it]]Contatti', 'index.php?site=contact', 0),
@@ -234,7 +234,7 @@ CREATE TABLE IF NOT EXISTS `plugins_startpage_settings_widgets` (
 
 INSERT INTO `plugins_startpage_settings_widgets` (`id`, `position`, `modulname`, `themes_modulname`, `widgetname`, `widgetdatei`, `activated`, `sort`) VALUES
 (1, 'navigation_widget', 'navigation', 'default', 'Navigation', 'widget_navigation', 1, 1),
-(2, 'footer_widget', 'footer', 'default', 'Footer Easy', 'widget_footer_easy', 1, 2);
+(2, 'footer_widget', 'footer_easy', 'default', 'Footer Easy', 'widget_footer_easy', 1, 2);
 -- Ende der Tabelle 'plugins_startpage_settings_widgets'
 
 -- Tabellenstruktur für Tabelle `settings`
@@ -439,7 +439,7 @@ INSERT INTO `settings_plugins` (`pluginID`, `name`, `modulname`, `info`, `admin_
 (11, 'My Profile', 'myprofile', '[[lang:de]]Kein Plugin. Bestandteil vom System!!![[lang:en]]No plugin. Part of the system!!![[lang:it]]Nessun plug-in. Parte del sistema!!!', '', 1, '', '', 'myprofile', '', '', '', 1, 0, 1, 0, 'deactivated'),
 (12, 'Report', 'report', '[[lang:de]]Kein Plugin. Bestandteil vom System!!![[lang:en]]No plugin. Part of the system!!![[lang:it]]Nessun plug-in. Parte del sistema!!!', '', 1, '', '', 'report', '', '', '', 1, 0, 1, 0, 'deactivated'),
 (13, 'Navigation', 'navigation', '[[lang:de]]Mit diesem Plugin k&ouml;nnt ihr euch die Navigation anzeigen lassen.[[lang:en]]With this plugin you can display navigation.[[lang:it]]Con questo plugin puoi visualizzare la Barra di navigazione predefinita.', '', 1, 'T-Seven', 'https://webspell-rm.de', '', '', '0.3', 'includes/plugins/navigation/', 1, 1, 0, 0, 'deactivated'),
-(14, 'Footer', 'footer', '[[lang:de]]Mit diesem Plugin k&ouml;nnt ihr einen neuen Footer anzeigen lassen.[[lang:en]]With this plugin you can have a new Footer displayed.[[lang:it]]Con questo plugin puoi visualizzare un nuovo piè di pagina.', 'admin_footer', 1, 'T-Seven', 'https://webspell-rm.de', '', '', '0.1', 'includes/plugins/footer/', 1, 1, 0, 0, 'deactivated');
+(14, 'Footer Easy', 'footer_easy', '[[lang:de]]Mit diesem Plugin k&ouml;nnt ihr einen neuen Footer Easy anzeigen lassen.[[lang:en]]With this plugin you can have a new Footer Easy displayed.[[lang:it]]Con questo plugin puoi visualizzare un nuovo piè di pagina.', 'admin_footer_easy', 1, 'T-Seven', 'https://webspell-rm.de', '', '', '0.1', 'includes/plugins/footer_easy/', 1, 1, 0, 0, 'deactivated');
 -- Ende der Tabelle 'settings_plugins'
 
 -- Tabellenstruktur für Tabelle `settings_plugins_widget`
@@ -453,10 +453,7 @@ CREATE TABLE IF NOT EXISTS `settings_plugins_widget` (
 
 INSERT INTO `settings_plugins_widget` (`id`, `modulname`, `widgetname`, `widgetdatei`, `area`) VALUES
 (1, 'navigation', 'Navigation', 'widget_navigation', 2),
-(2, 'footer', 'Footer Easy', 'widget_footer_easy', 6),
-(3, 'footer', 'Footer Default', 'widget_footer_default', 6),
-(4, 'footer', 'Footer Plugin', 'widget_footer_plugin', 6),
-(5, 'footer', 'Footer Box', 'widget_footer_box', 6);
+(2, 'footer_easy', 'Footer Easy', 'widget_footer_easy', 6);
 -- Ende der Tabelle 'settings_plugins_widget'
 
 -- Tabellenstruktur für Tabelle `settings_plugins_widget_settings`
@@ -474,7 +471,7 @@ CREATE TABLE IF NOT EXISTS `settings_plugins_widget_settings` (
 
 INSERT IGNORE INTO `settings_plugins_widget_settings` (`id`, `side`, `position`, `modulname`, `themes_modulname`, `widgetname`, `widgetdatei`, `activated`, `sort`) VALUES
 (1, '', 'navigation_widget', 'navigation', 'default', 'Navigation', 'widget_navigation', 1, 0),
-(2, '', 'footer_widget', 'footer', 'default', 'Footer Easy', 'widget_footer_easy', 1, 0);
+(2, '', 'footer_widget', 'footer_easy', 'default', 'Footer Easy', 'widget_footer_easy', 1, 0);
 -- Ende der Tabelle 'settings_plugins_widget_settings'
 
 -- Tabellenstruktur für Tabelle `settings_privacy_policy`
@@ -636,7 +633,7 @@ CREATE TABLE IF NOT EXISTS `settings_widgets` (
 
 INSERT INTO `settings_widgets` (`id`, `position`, `description`, `modulname`, `themes_modulname`, `widget`, `widgetname`, `widgetdatei`, `activate`, `number`, `sort`) VALUES
 (1, 'page_navigation_widget', 'page_navigation_widget', 'navigation', 'default', 'widget1', 'Navigation', 'widget_navigation', 0, 1, 1),
-(2, 'page_footer_widget', 'page_footer_widget', 'footer', 'default', 'widget2', 'Easy Footer Content', 'widget_easyfooter_content', 0, 1, 0);
+(2, 'page_footer_widget', 'page_footer_widget', 'footer_easy', 'default', 'widget2', 'Easy Footer Content', 'widget_easyfooter_content', 0, 1, 0);
 -- Ende der Tabelle 'settings_widgets'
 
 -- Tabellenstruktur für Tabelle `settings_widgets`
@@ -825,7 +822,7 @@ INSERT INTO `user_role_admin_navi_rights` (`id`, `roleID`, `type`, `modulname`, 
 (23, 1, 'link', 'ac_plugin_manager', 24),
 (24, 1, 'link', 'ac_plugin_installer', 25),
 (25, 1, 'link', 'ac_editlang', 26),
-(26, 1, 'link', 'footer', 36),
+(26, 1, 'link', 'footer_easy', 36),
 (27, 1, 'link', 'ac_admin_security', 28),
 (28, 1, 'link', 'ac_user_roles', 29),
 (29, 1, 'category', 'cat_webinfo', 1),
@@ -974,61 +971,16 @@ CREATE TABLE IF NOT EXISTS `settings_themes` (
   `pfad` varchar(255) NOT NULL,
   `version` varchar(11) NOT NULL,
   `active` int(11) DEFAULT NULL,
+  `themename` varchar(255) NOT NULL,
   `express_active` int(11) NOT NULL DEFAULT '0',
-  `nav1` varchar(255) NOT NULL,
-  `nav2` varchar(255) NOT NULL,
-  `nav3` varchar(255) NOT NULL,
-  `nav4` varchar(255) NOT NULL,
-  `nav5` varchar(255) NOT NULL,
-  `nav6` varchar(255) NOT NULL,
-  `nav7` varchar(255) NOT NULL,
-  `nav8` varchar(255) NOT NULL,
-  `nav9` varchar(255) NOT NULL,
-  `nav10` varchar(255) NOT NULL,
-  `nav11` varchar(255) NOT NULL,
-  `nav12` varchar(255) NOT NULL,
-  `nav_text_alignment` varchar(255) DEFAULT '0',
-  `body1` text NOT NULL,
-  `body2` varchar(255) NOT NULL,
-  `body3` varchar(255) NOT NULL,
-  `body4` varchar(255) NOT NULL,
-  `body5` varchar(255) NOT NULL,
-  `background_pic` varchar(255) DEFAULT '0',
-  `border_radius` varchar(255) DEFAULT '0',
-  `typo1` varchar(255) NOT NULL,
-  `typo2` varchar(255) NOT NULL,
-  `typo3` varchar(255) NOT NULL,
-  `typo4` varchar(255) NOT NULL,
-  `typo5` varchar(255) NOT NULL,
-  `typo6` varchar(255) NOT NULL,
-  `typo7` varchar(255) NOT NULL,
-  `typo8` varchar(255) NOT NULL,
-  `card1` varchar(255) NOT NULL,
-  `card2` varchar(255) NOT NULL,
-  `foot1` varchar(255) NOT NULL,
-  `foot2` varchar(255) NOT NULL,
-  `foot3` varchar(255) NOT NULL,
-  `foot4` varchar(255) NOT NULL,
-  `foot5` varchar(255) NOT NULL,
-  `foot6` varchar(255) NOT NULL,
-  `calendar1` varchar(255) NOT NULL,
-  `calendar2` varchar(255) NOT NULL,
-  `carousel1` varchar(255) NOT NULL,
-  `carousel2` varchar(255) NOT NULL,
-  `carousel3` varchar(255) NOT NULL,
-  `carousel4` varchar(255) NOT NULL,
   `logo_pic` varchar(255) DEFAULT '0',
-  `logotext1` varchar(255) NOT NULL,
-  `logotext2` varchar(255) NOT NULL,
   `reg_pic` varchar(255) NOT NULL,
-  `reg1` varchar(255) NOT NULL,
-  `reg2` varchar(255) NOT NULL,
   `headlines` varchar(255) DEFAULT '0',
   `sort` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`themeID`)
 ) ENGINE=InnoDB;
 
-INSERT INTO `settings_themes` (`themeID`, `name`, `modulname`, `pfad`, `version`, `active`, `express_active`, `nav1`, `nav2`, `nav3`, `nav4`, `nav5`, `nav6`, `nav7`, `nav8`, `nav9`, `nav10`, `nav11`, `nav12`, `nav_text_alignment`, `body1`, `body2`, `body3`, `body4`, `body5`, `background_pic`, `border_radius`, `typo1`, `typo2`, `typo3`, `typo4`, `typo5`, `typo6`, `typo7`, `typo8`, `card1`, `card2`, `foot1`, `foot2`, `foot3`, `foot4`, `foot5`, `foot6`, `calendar1`, `calendar2`, `carousel1`, `carousel2`, `carousel3`, `carousel4`, `logo_pic`, `logotext1`, `logotext2`, `reg_pic`, `reg1`, `reg2`, `headlines`, `sort`) VALUES
-(1, 'Default', 'default', 'default', '0.3', 1, '', 'rgb(255,255,255)', '14px', 'rgb(51,51,51)', 'rgb(254,130,29)', 'rgb(254,130,29)', '2px', 'rgb(51,51,51)', 'rgb(196,89,1)', 'rgb(221,221,221)', 'rgb(255,255,255)', 'rgb(221,221,221)', 'rgb(255,255,255)', 'ms-auto', 'Roboto', '13px', 'rgb(255,255,255)', 'rgb(51,51,51)', 'rgb(236,236,236)', '', '0px', '', '', '', 'rgb(254,130,29)', '', '', '', 'rgb(196,89,1)', 'rgb(255,255,255)', 'rgb(221,221,221)', 'rgb(85,85,85)', 'rgb(255,255,255)', 'rgb(255,255,255)', 'rgb(181,179,179)', 'rgb(254,130,29)', 'rgb(255,255,255)', '', '', 'rgb(255,255,255)', 'rgb(254,130,29)', 'rgb(255,255,255)', 'rgb(254,130,29)', 'default_logo.png', '', '', 'default_login_bg.jpg', 'rgb(254,130,29)', 'rgb(255,255,255)', 'headlines_03.css', 1);
+INSERT INTO `settings_themes` (`themeID`, `name`, `modulname`, `pfad`, `version`, `active`, `themename`, `express_active`, `logo_pic`, `reg_pic`, `headlines`, `sort`) VALUES
+(1, 'Default', 'default', 'default', '0.3', 1, 'cyborg', 0, 'default_logo.png', 'default_login_bg.jpg', 'headlines_03.css', 1);
 -- Ende der Tabelle 'settings_themes'
 
