@@ -203,89 +203,22 @@ INSERT INTO `navigation_website_sub` (`snavID`, `mnavID`, `name`, `modulname`, `
 
 -- Tabellenstruktur für Tabelle `plugins_footer`
 CREATE TABLE IF NOT EXISTS `plugins_footer` (
-  `footID` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `banner` varchar(255) NOT NULL,
-  `about` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `strasse` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `telefon` varchar(255) NOT NULL,
-  `since` varchar(255) NOT NULL,
-  `linkname1` varchar(255) NOT NULL,
-  `navilink1` varchar(255) NOT NULL,
-  `linkname2` varchar(255) NOT NULL,
-  `navilink2` varchar(255) NOT NULL,
-  `linkname3` varchar(255) NOT NULL,
-  `navilink3` varchar(255) NOT NULL,
-  `linkname4` varchar(255) NOT NULL,
-  `navilink4` varchar(255) NOT NULL,
-  `linkname5` varchar(255) NOT NULL,
-  `navilink5` varchar(255) NOT NULL,
-  `linkname6` varchar(255) NOT NULL,
-  `navilink6` varchar(255) NOT NULL,
-  `linkname7` varchar(255) NOT NULL,
-  `navilink7` varchar(255) NOT NULL,
-  `linkname8` varchar(255) NOT NULL,
-  `navilink8` varchar(255) NOT NULL,
-  `linkname9` varchar(255) NOT NULL,
-  `navilink9` varchar(255) NOT NULL,
-  `linkname10` varchar(255) NOT NULL,
-  `navilink10` varchar(255) NOT NULL,
-  `social_text` varchar(255) NOT NULL,
-  `social_link_name1` text NOT NULL,
-  `social_link1` varchar(255) NOT NULL,
-  `social_link_name2` varchar(255) NOT NULL,
-  `social_link2` varchar(255) NOT NULL,
-  `social_link_name3` varchar(255) NOT NULL,
-  `social_link3` varchar(255) NOT NULL,
-  `copyright_link_name1` varchar(255) NOT NULL,
-  `copyright_link1` varchar(255) NOT NULL,
-  `copyright_link_name2` varchar(255) NOT NULL,
-  `copyright_link2` varchar(255) NOT NULL,
-  `copyright_link_name3` varchar(255) NOT NULL,
-  `copyright_link3` varchar(255) NOT NULL,
-  `copyright_link_name4` varchar(255) NOT NULL,
-  `copyright_link4` varchar(255) NOT NULL,
-  `copyright_link_name5` varchar(255) NOT NULL,
-  `copyright_link5` varchar(255) NOT NULL,
-  `widget_left` varchar(255) NOT NULL,
-  `widget_center` varchar(255) NOT NULL,
-  `widget_right` varchar(255) NOT NULL,
-  `widgetdatei_left` varchar(255) NOT NULL,
-  `widgetdatei_center` varchar(255) NOT NULL,
-  `widgetdatei_right` varchar(255) NOT NULL
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `link_number` tinyint(1) NOT NULL COMMENT '1–5',
+  `copyright_link_name` varchar(255) NOT NULL DEFAULT '',
+  `copyright_link` varchar(255) NOT NULL DEFAULT '',
+  `new_tab` tinyint(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `link_number` (`link_number`)
 ) ENGINE=InnoDB;
 
-INSERT INTO `plugins_footer` (`footID`, `banner`, `about`, `name`, `strasse`, `email`, `telefon`, `since`, `linkname1`, `navilink1`, `linkname2`, `navilink2`, `linkname3`, `navilink3`, `linkname4`, `navilink4`, `linkname5`, `navilink5`, `linkname6`, `navilink6`, `linkname7`, `navilink7`, `linkname8`, `navilink8`, `linkname9`, `navilink9`, `linkname10`, `navilink10`, `social_text`, `social_link_name1`, `social_link1`, `social_link_name2`, `social_link2`, `social_link_name3`, `social_link3`, `copyright_link_name1`, `copyright_link1`, `copyright_link_name2`, `copyright_link2`, `copyright_link_name3`, `copyright_link3`, `copyright_link_name4`, `copyright_link4`, `copyright_link_name5`, `copyright_link5`, `widget_left`, `widget_center`, `widget_right`, `widgetdatei_left`, `widgetdatei_center`, `widgetdatei_right`) VALUES
-(1, '', 'Team Clanname ist eine 1999 gegründete deutsche E-Sport-Organisation...', 'Hans Mustermann', 'Musterhausen 11, Germany', 'mail@Clanname-esport.de', '(123) 456-7890', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Impressum', 'index.php?site=imprint', 'Datenschutz', 'index.php?site=privacy_policy', 'Kontakt', 'index.php?site=contact', 'Counter', 'index.php?site=counter', '', '', 'blog', 'about_us', 'userlist', '', '', '');
+INSERT INTO `plugins_footer` (`id`, `link_number`, `copyright_link_name`, `copyright_link`, `new_tab`) VALUES
+(1, 1, '[[lang:de]]Impressum[[lang:en]]Imprint[[lang:it]]Impronta Editoriale', 'index.php?site=imprint', 0),
+(2, 2, '[[lang:de]]Datenschutz-Bestimmungen[[lang:en]]Privacy Policy[[lang:it]]Informativa sulla Privacy', 'index.php?site=privacy_policy', 0),
+(3, 3, '[[lang:de]]Kontakt[[lang:en]]Contact[[lang:it]]Contatti', 'index.php?site=contact', 0),
+(4, 4, '[[lang:de]]Counter[[lang:en]]Counter[[lang:it]]Counter', 'index.php?site=counter', 0),
+(5, 5, '', '', 0);
 -- Ende der Tabelle 'plugins_footer'
-
--- Tabellenstruktur für Tabelle `plugins_footer_target`
-CREATE TABLE IF NOT EXISTS `plugins_footer_target` (
-  `targetID` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `windows1` int(1) NOT NULL DEFAULT '1',
-  `windows2` int(1) NOT NULL DEFAULT '1',
-  `windows3` int(1) NOT NULL DEFAULT '1',
-  `windows4` int(1) NOT NULL DEFAULT '1',
-  `windows5` int(1) NOT NULL DEFAULT '1',
-  `windows6` int(1) NOT NULL DEFAULT '1',
-  `windows7` int(1) NOT NULL DEFAULT '1',
-  `windows8` int(1) NOT NULL DEFAULT '1',
-  `windows9` int(1) NOT NULL DEFAULT '1',
-  `windows10` int(1) NOT NULL DEFAULT '1',
-  `windows11` int(1) NOT NULL DEFAULT '1',
-  `windows12` int(1) NOT NULL DEFAULT '1',
-  `windows13` int(1) NOT NULL DEFAULT '1',
-  `windows14` int(1) NOT NULL DEFAULT '1',
-  `windows15` int(1) NOT NULL DEFAULT '1',
-  `windows16` int(1) NOT NULL DEFAULT '1',
-  `windows17` int(1) NOT NULL DEFAULT '1',
-  `windows18` int(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB;
-
-INSERT INTO `plugins_footer_target` (`targetID`, `windows1`, `windows2`, `windows3`, `windows4`, `windows5`, `windows6`, `windows7`, `windows8`, `windows9`, `windows10`, `windows11`, `windows12`, `windows13`, `windows14`, `windows15`, `windows16`, `windows17`, `windows18`) VALUES
-(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
--- Ende der Tabelle 'plugins_footer_target'
 
 -- Tabellenstruktur für Tabelle `plugins_startpage_settings_widgets`
 CREATE TABLE IF NOT EXISTS `plugins_startpage_settings_widgets` (
