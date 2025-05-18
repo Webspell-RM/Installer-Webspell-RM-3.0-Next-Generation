@@ -984,3 +984,10 @@ INSERT INTO `settings_themes` (`themeID`, `name`, `modulname`, `pfad`, `version`
 (1, 'Default', 'default', 'default', '0.3', 1, 'cyborg', 0, 'default_logo.png', 'default_login_bg.jpg', 'headlines_03.css', 1);
 -- Ende der Tabelle 'settings_themes'
 
+-- Tabellenstruktur für Tabelle `settings_headstyle_config`
+CREATE TABLE IF NOT EXISTS settings_headstyle_config (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  selected_style VARCHAR(32) NOT NULL DEFAULT 'head-style-1'
+);
+-- Ende der Tabelle 'settings_headstyle_config'
+
