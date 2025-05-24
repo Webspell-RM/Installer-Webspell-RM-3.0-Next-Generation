@@ -991,3 +991,33 @@ CREATE TABLE IF NOT EXISTS settings_headstyle_config (
 );
 -- Ende der Tabelle 'settings_headstyle_config'
 
+-- Tabellenstruktur für Tabelle `comments`
+CREATE TABLE IF NOT EXISTS comments (
+  commentID INT(11) NOT NULL AUTO_INCREMENT,
+  plugin VARCHAR(50) NOT NULL,
+  itemID INT(11) NOT NULL,
+  userID INT(11) NOT NULL,
+  comment TEXT NOT NULL,
+  date DATETIME NOT NULL DEFAULT current_timestamp(),
+  parentID INT(11) DEFAULT 0,
+  PRIMARY KEY (commentID),
+  KEY plugin_item (plugin, itemID),
+  KEY userID (userID),
+  CONSTRAINT fk_global_comments_user FOREIGN KEY (userID) REFERENCES users (userID) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- Ende der Tabelle 'comments'
+
+-- Tabellenstruktur für Tabelle ratings
+CREATE TABLE IF NOT EXISTS ratings (
+  ratingID INT(11) NOT NULL AUTO_INCREMENT,
+  plugin VARCHAR(50) NOT NULL,
+  itemID INT(11) NOT NULL,
+  userID INT(11) NOT NULL,
+  rating TINYINT(4) NOT NULL CHECK (rating BETWEEN 0 AND 10),
+  date DATETIME NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (ratingID),
+  UNIQUE KEY unique_vote (plugin, itemID, userID),
+  KEY userID (userID),
+  CONSTRAINT fk_global_ratings_user FOREIGN KEY (userID) REFERENCES users (userID) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- Ende der Tabelle 'ratings'
