@@ -133,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `navigation_dashboard_links` (
 
 INSERT INTO `navigation_dashboard_links` (`linkID`, `catID`, `modulname`, `name`, `url`, `sort`) VALUES
 (1, 1, 'ac_overview', '[[lang:de]]Webserver-Info[[lang:en]]Webserver Info[[lang:it]]Informazioni Sul Sito', 'admincenter.php?site=overview', 1),
-(2, 1, 'ac_page_statistic', '[[lang:de]]Seiten Statistiken[[lang:en]]Page Statistics[[lang:it]]Pagina delle Statistiche', 'admincenter.php?site=page_statistic', 2),
+(2, 1, 'ac_page_statistic', '[[lang:de]]Seiten Statistiken[[lang:en]]Page Statistics[[lang:it]]Pagina delle Statistiche', 'admincenter.php?site=statistik', 2),
 (3, 1, 'ac_visitor_statistic', '[[lang:de]]Besucher Statistiken[[lang:en]]Visitor Statistics[[lang:it]]Statistiche Visitatori', 'admincenter.php?site=visitor_statistic', 3),
 (4, 1, 'ac_settings', '[[lang:de]]Allgemeine Einstellungen[[lang:en]]General Settings[[lang:it]]Impostazioni Generali', 'admincenter.php?site=settings', 4),
 (5, 1, 'ac_dashboard_navigation', '[[lang:de]]Admincenter Navigation[[lang:en]]Admincenter Navigation[[lang:it]]Menu Navigazione Admin', 'admincenter.php?site=dashboard_navigation', 5),
@@ -142,24 +142,24 @@ INSERT INTO `navigation_dashboard_links` (`linkID`, `catID`, `modulname`, `name`
 (8, 1, 'ac_modrewrite', '[[lang:de]]Mod-Rewrite[[lang:en]]Mod-Rewrite[[lang:it]]Mod-Rewrite', 'admincenter.php?site=modrewrite', 8),
 (9, 1, 'ac_database', '[[lang:de]]Datenbank[[lang:en]]Database[[lang:it]]Database', 'admincenter.php?site=database', 9),
 (10, 1, 'ac_update', '[[lang:de]]Webspell-RM Update[[lang:en]]Webspell-RM Update[[lang:it]]Aggiornamento Webspell-RM', 'admincenter.php?site=update', 10),
-(11, 3, 'ac_users', '[[lang:de]]Registrierte Benutzer[[lang:en]]Registered Users[[lang:it]]Utenti Registrati', 'admincenter.php?site=users', 1),
-(12, 5, 'ac_webside_navigation', '[[lang:de]]Webseiten Navigation[[lang:en]]Website Navigation[[lang:it]]Menu Navigazione Web', 'admincenter.php?site=webside_navigation', 1),
-(13, 5, 'ac_themes_installer', '[[lang:de]]Themes Installer[[lang:en]]Themes Installer[[lang:it]]Installazione Themes', 'admincenter.php?site=themes_installer', 2),
-(14, 5, 'ac_themes', '[[lang:de]]Themes[[lang:en]]Themes[[lang:it]]Temi', 'admincenter.php?site=theme', 3),
-(15, 5, 'ac_startpage', '[[lang:de]]Startseite[[lang:en]]Start Page[[lang:it]]Pagina Principale', 'admincenter.php?site=settings_startpage', 5),
-(16, 5, 'ac_static', '[[lang:de]]Statische Seiten[[lang:en]]Static Pages[[lang:it]]Pagine Statiche', 'admincenter.php?site=settings_static', 6),
-(17, 5, 'ac_imprint', '[[lang:de]]Impressum[[lang:en]]Imprint[[lang:it]]Impronta Editoriale', 'admincenter.php?site=settings_imprint', 7),
-(18, 5, 'ac_privacy_policy', '[[lang:de]]Datenschutz-Bestimmungen[[lang:en]]Privacy Policy[[lang:it]]Informativa sulla Privacy', 'admincenter.php?site=settings_privacy_policy', 8),
-(19, 6, 'ac_plugin_manager', '[[lang:de]]Plugin & Widget Manager[[lang:en]]Plugin & Widget Manager[[lang:it]]Gestore di Plugin e Widget', 'admincenter.php?site=plugin_manager', 1),
-(20, 6, 'ac_plugin_installer', '[[lang:de]]Plugin Installer[[lang:en]]Plugin Installer[[lang:it]]Installazione Plugin', 'admincenter.php?site=plugin_installer', 2),
-(21, 1, 'ac_editlang', '[[lang:de]]Spracheditor[[lang:en]]Language Editor[[lang:it]]Editor di Linguaggi', 'admincenter.php?site=editlang', 11),
-(22, 7, 'footer_easy', '[[lang:de]]Footer Easy[[lang:en]]Footer Easy[[lang:it]]Piè di pagina Easy', 'admincenter.php?site=admin_footer_easy', 0),
-(23, 3, 'ac_admin_security', '[[lang:de]]Admin Security[[lang:en]]Admin Security[[lang:it]]Sicurezza Admin', 'admincenter.php?site=admin_security', 2),
-(24, 3, 'ac_user_roles', '[[lang:de]]User Roles[[lang:en]]User Roles[[lang:it]]Ruoli Utente', 'admincenter.php?site=user_roles', 3),
-(25, 3, 'role_permissions', 'Role Permissions.php', 'admincenter.php?site=admin_role_permissions', 1),
-(26, 1, 'ac_db_stats', 'Datenbank Statistik', 'admincenter.php?site=db_stats', 1),
-(27, 3, 'ac_admin_log', 'Admin Log', 'admincenter.php?site=admin_log', 1),
-(28, 1, 'ac_update_core', 'Update Core', 'admincenter.php?site=update_core', 1);
+(11, 5, 'ac_webside_navigation', '[[lang:de]]Webseiten Navigation[[lang:en]]Website Navigation[[lang:it]]Menu Navigazione Web', 'admincenter.php?site=webside_navigation', 1),
+(12, 5, 'ac_themes_installer', '[[lang:de]]Themes Installer[[lang:en]]Themes Installer[[lang:it]]Installazione Themes', 'admincenter.php?site=themes_installer', 2),
+(13, 5, 'ac_themes', '[[lang:de]]Themes[[lang:en]]Themes[[lang:it]]Temi', 'admincenter.php?site=theme', 3),
+(14, 5, 'ac_startpage', '[[lang:de]]Startseite[[lang:en]]Start Page[[lang:it]]Pagina Principale', 'admincenter.php?site=settings_startpage', 5),
+(15, 5, 'ac_static', '[[lang:de]]Statische Seiten[[lang:en]]Static Pages[[lang:it]]Pagine Statiche', 'admincenter.php?site=settings_static', 6),
+(16, 5, 'ac_imprint', '[[lang:de]]Impressum[[lang:en]]Imprint[[lang:it]]Impronta Editoriale', 'admincenter.php?site=settings_imprint', 7),
+(17, 5, 'ac_privacy_policy', '[[lang:de]]Datenschutz-Bestimmungen[[lang:en]]Privacy Policy[[lang:it]]Informativa sulla Privacy', 'admincenter.php?site=settings_privacy_policy', 8),
+(18, 6, 'ac_plugin_manager', '[[lang:de]]Plugin & Widget Manager[[lang:en]]Plugin & Widget Manager[[lang:it]]Gestore di Plugin e Widget', 'admincenter.php?site=plugin_manager', 1),
+(19, 6, 'ac_plugin_installer', '[[lang:de]]Plugin Installer[[lang:en]]Plugin Installer[[lang:it]]Installazione Plugin', 'admincenter.php?site=plugin_installer', 2),
+(20, 1, 'ac_editlang', '[[lang:de]]Spracheditor[[lang:en]]Language Editor[[lang:it]]Editor di Linguaggi', 'admincenter.php?site=editlang', 11),
+(21, 7, 'footer_easy', '[[lang:de]]Footer Easy[[lang:en]]Footer Easy[[lang:it]]PiÃ¨ di pagina Easy', 'admincenter.php?site=admin_footer_easy', 0),
+(22, 3, 'ac_admin_security', '[[lang:de]]Admin Security[[lang:en]]Admin Security[[lang:it]]Sicurezza Admin', 'admincenter.php?site=admin_security', 2),
+(23, 3, 'ac_user_roles', '[[lang:de]]Registrierte Benutzer und Rollen[[lang:en]]Registered users and Roles[[lang:it]]Utenti registrati e ruoli', 'admincenter.php?site=user_roles', 3),
+(24, 3, 'role_permissions', '[[lang:de]]Rollenberechtigungen[[lang:en]]Role Permissions[[lang:it]]Permessi dei ruoli', 'admincenter.php?site=admin_role_permissions', 1),
+(25, 1, 'ac_db_stats', '[[lang:de]]Statistiken über Besucher und Seitenzugriffe[[lang:en]]Statistics about visitors and page views[[lang:it]]Statistiche su visitatori e visualizzazioni di pagina', 'admincenter.php?site=db_stats', 1),
+(26, 3, 'ac_admin_log', '[[lang:de]]Admin-Protokoll[[lang:en]]Admin Log[[lang:it]]Registro Admin', 'admincenter.php?site=admin_log', 1),
+(27, 1, 'ac_update_core', '[[lang:de]]Core aktualisieren[[lang:en]]Update Core[[lang:it]]Aggiorna Core', 'admincenter.php?site=update_core', 1),
+(28, 5, 'ac_headstyle', '[[lang:de]]Kopfzeilen-Stil[[lang:en]]Head Style[[lang:it]]Stile intestazione', 'admincenter.php?site=admin_headstyle', 1);
 -- Ende der Tabelle 'navigation_dashboard_links'
 
 -- Tabellenstruktur für Tabelle `navigation_website_main`
@@ -286,62 +286,6 @@ CREATE TABLE IF NOT EXISTS `settings` (
 ) ENGINE=InnoDB;
 -- Ende der Tabelle 'settings'
 
--- Tabellenstruktur für Tabelle `settings_buttons`
-CREATE TABLE IF NOT EXISTS `settings_buttons` (
-  `buttonID` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `name` varchar(255) NOT NULL,
-  `modulname` varchar(255) NOT NULL,
-  `active` int(11) DEFAULT NULL,
-  `version` varchar(11) NOT NULL,
-  `button1` varchar(255) NOT NULL,
-  `button2` varchar(255) NOT NULL,
-  `button3` varchar(255) NOT NULL,
-  `button4` varchar(255) NOT NULL,
-  `button5` varchar(255) NOT NULL,
-  `button6` varchar(255) NOT NULL,
-  `button7` varchar(255) NOT NULL,
-  `button8` varchar(255) NOT NULL,
-  `button9` varchar(255) NOT NULL,
-  `button10` varchar(255) NOT NULL,
-  `button11` varchar(255) NOT NULL,
-  `button12` varchar(255) NOT NULL,
-  `button13` varchar(255) NOT NULL,
-  `button14` varchar(255) NOT NULL,
-  `button15` varchar(255) NOT NULL,
-  `button16` varchar(255) NOT NULL,
-  `button17` varchar(255) NOT NULL,
-  `button18` varchar(255) NOT NULL,
-  `button19` varchar(255) NOT NULL,
-  `button20` varchar(255) NOT NULL,
-  `button21` varchar(255) NOT NULL,
-  `button22` varchar(255) NOT NULL,
-  `button23` varchar(255) NOT NULL,
-  `button24` varchar(255) NOT NULL,
-  `button25` varchar(255) NOT NULL,
-  `button26` varchar(255) NOT NULL,
-  `button27` varchar(255) NOT NULL,
-  `button28` varchar(255) NOT NULL,
-  `button29` varchar(255) NOT NULL,
-  `button30` varchar(255) NOT NULL,
-  `button31` varchar(255) NOT NULL,
-  `button32` varchar(255) NOT NULL,
-  `button33` varchar(255) NOT NULL,
-  `button34` varchar(255) NOT NULL,
-  `button35` varchar(255) NOT NULL,
-  `button36` varchar(255) NOT NULL,
-  `button37` varchar(255) NOT NULL,
-  `button38` varchar(255) NOT NULL,
-  `button39` varchar(255) NOT NULL,
-  `button40` varchar(255) NOT NULL,
-  `button41` varchar(255) NOT NULL,
-  `button42` varchar(255) NOT NULL,
-  `btn_border_radius` varchar(255) DEFAULT '0'
-) ENGINE=InnoDB;
-
-INSERT IGNORE INTO `settings_buttons` (`buttonID`, `name`, `modulname`, `active`, `version`, `button1`, `button2`, `button3`, `button4`, `button5`, `button6`, `button7`, `button8`, `button9`, `button10`, `button11`, `button12`, `button13`, `button14`, `button15`, `button16`, `button17`, `button18`, `button19`, `button20`, `button21`, `button22`, `button23`, `button24`, `button25`, `button26`, `button27`, `button28`, `button29`, `button30`, `button31`, `button32`, `button33`, `button34`, `button35`, `button36`, `button37`, `button38`, `button39`, `button40`, `button41`, `button42`, `btn_border_radius`) VALUES
-(1, 'Default', 'default', 0, '0.3', 'rgb(254,130,29)', 'rgb(196,89,1)', 'rgb(255,255,255)', 'rgb(254,130,29)', 'rgb(196,89,1)', 'rgb(108,117,125)', 'rgb(90,98,104)', 'rgb(255,255,255)', 'rgb(108,117,125)', 'rgb(84,91,98)', 'rgb(40,167,69)', 'rgb(33,136,56)', 'rgb(255,255,255)', 'rgb(40,167,69)', 'rgb(30,126,52)', 'rgb(220,53,69)', 'rgb(200,35,51)', 'rgb(255,255,255)', 'rgb(220,53,69)', 'rgb(189,33,48)', 'rgb(255,193,7)', 'rgb(224,168,0)', 'rgb(33,37,41)', 'rgb(255,193,7)', 'rgb(211,158,0)', 'rgb(23,162,184)', 'rgb(19,132,150)', 'rgb(255,255,255)', 'rgb(23,162,184)', 'rgb(17,122,139)', 'rgb(248,249,250)', 'rgb(226,230,234)', 'rgb(33,37,41)', 'rgb(248,249,250)', 'rgb(218,224,229)', 'rgb(52,58,64)', 'rgb(35,39,43)', 'rgb(255,255,255)', 'rgb(52,58,64)', 'rgb(29,33,36)', 'rgb(254,130,29)', 'rgb(196,89,1)', '0px');
--- Ende der Tabelle 'settings_buttons'
-
 -- Tabellenstruktur für Tabelle `settings_imprint`
 CREATE TABLE IF NOT EXISTS `settings_imprint` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -436,7 +380,7 @@ INSERT INTO `settings_plugins` (`name`, `modulname`, `info`, `admin_file`, `acti
 ('Lost Password', 'lostpassword', '[[lang:de]]Kein Plugin. Bestandteil vom System!!![[lang:en]]No plugin. Part of the system!!![[lang:it]]Nessun plug-in. Parte del sistema!!!', '', 1, '', '', 'lostpassword', '', '', '', 1, 0, 1, 0, 'deactivated'),
 ('Contact', 'contact', '[[lang:de]]Kein Plugin. Bestandteil vom System!!![[lang:en]]No plugin. Part of the system!!![[lang:it]]Nessun plug-in. Parte del sistema!!!', '', 1, '', '', 'contact', '', '', '', 1, 0, 1, 0, 'deactivated'),
 ('Register', 'register', '[[lang:de]]Kein Plugin. Bestandteil vom System!!![[lang:en]]No plugin. Part of the system!!![[lang:it]]Nessun plug-in. Parte del sistema!!!', '', 1, '', '', 'register', '', '', '', 1, 0, 1, 0, 'deactivated'),
-('My Profile', 'myprofile', '[[lang:de]]Kein Plugin. Bestandteil vom System!!![[lang:en]]No plugin. Part of the system!!![[lang:it]]Nessun plug-in. Parte del sistema!!!', '', 1, '', '', 'myprofile', '', '', '', 1, 0, 1, 0, 'deactivated'),
+('Edit Profile', 'edit_profile', '[[lang:de]]Kein Plugin. Bestandteil vom System!!![[lang:en]]No plugin. Part of the system!!![[lang:it]]Nessun plug-in. Parte del sistema!!!', '', 1, '', '', 'edit_profile,edit_profile_save', '', '', '', 1, 1, 1, 0, 'deactivated'),
 ('Report', 'report', '[[lang:de]]Kein Plugin. Bestandteil vom System!!![[lang:en]]No plugin. Part of the system!!![[lang:it]]Nessun plug-in. Parte del sistema!!!', '', 1, '', '', 'report', '', '', '', 1, 0, 1, 0, 'deactivated'),
 ('Navigation', 'navigation', '[[lang:de]]Mit diesem Plugin könnt ihr euch die Navigation anzeigen lassen.[[lang:en]]With this plugin you can display navigation.[[lang:it]]Con questo plugin puoi visualizzare la Barra di navigazione predefinita.', '', 1, 'T-Seven', 'https://webspell-rm.de', '', '', '0.3', 'includes/plugins/navigation/', 1, 1, 0, 0, 'deactivated'),
 ('Footer Easy', 'footer_easy', '[[lang:de]]Mit diesem Plugin könnt ihr einen neuen Footer Easy anzeigen lassen.[[lang:en]]With this plugin you can have a new Footer Easy displayed.[[lang:it]]Con questo plugin puoi visualizzare un nuovo piè di pagina.', 'admin_footer_easy', 1, 'T-Seven', 'https://webspell-rm.de', '', '', '0.1', 'includes/plugins/footer_easy/', 1, 1, 0, 0, 'deactivated');
@@ -527,79 +471,14 @@ CREATE TABLE IF NOT EXISTS `settings_startpage` (
   `editor` TINYINT(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT IGNORE INTO settings_startpage (pageID, title, startpage_text, date, editor) VALUES
+INSERT INTO settings_startpage (`pageID`, `title`, `startpage_text`, `date`, `editor`) VALUES
 (1, 'Next-Generation', 
-'<div class=\"container px-4 py-5\" id=\"icon-grid\">
-  <h6 class=\"pb-2 border-bottom\">Webspell RM (Next-Generation)</h6>
+'<div class="container px-4 py-5" id="icon-grid">
+  <h6 class="pb-2 border-bottom">Webspell RM (Next-Generation)</h6>
   <small>Das Bootstrap CMS der Zukunft</small>
-  <div class=\"row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5\">
+</div>', 
+CURRENT_TIMESTAMP, '');
 
-    <div class=\"col d-flex align-items-start\">
-      <i class=\"bi bi-house bi-color flex-shrink-0 me-3\" style=\"font-size: 2rem;\"></i>
-      <div>
-        <h3 class=\"fw-bold mb-0 fs-4\">Next-Generation</h3>
-        <p>Objektorientierte Programmierung<br>Einfacher, sauberer Code</p>
-      </div>
-    </div>
-
-    <div class=\"col d-flex align-items-start\">
-      <i class=\"bi bi-bootstrap bi-color flex-shrink-0 me-3\" style=\"font-size: 2rem;\"></i>
-      <div>
-        <h3 class=\"fw-bold mb-0 fs-4\">Bootstrap</h3>
-        <p>Vordefinierte Klassen für einfache Layout-Optionen, sowie umfangreiche Mixins für die Erstellung von semantischeren Layouts.</p>
-      </div>
-    </div>
-
-    <div class=\"col d-flex align-items-start\">
-      <i class=\"bi bi-layout-text-window-reverse bi-color flex-shrink-0 me-3\" style=\"font-size: 2rem;\"></i>
-      <div>
-        <h3 class=\"fw-bold mb-0 fs-4\">Frische Layouts</h3>
-        <p>Mit Bootstrap 5 kann man einfach neue Layouts erstellt!</p>
-      </div>
-    </div>
-
-    <div class=\"col d-flex align-items-start\">
-      <i class=\"bi bi-cloud-download bi-color flex-shrink-0 me-3\" style=\"font-size: 2rem;\"></i>
-      <div>
-        <h3 class=\"fw-bold mb-0 fs-4\">Kostenlos</h3>
-        <p>Wie immer ist Webspell-RM kostenlos!</p>
-      </div>
-    </div>
-
-    <div class=\"col d-flex align-items-start\">
-      <i class=\"bi bi-box-arrow-down bi-color flex-shrink-0 me-3\" style=\"font-size: 2rem;\"></i>
-      <div>
-        <h3 class=\"fw-bold mb-0 fs-4\">Template Installer</h3>
-        <p>Mit bis zu xx Templates erstellst du mit dem Template Installer in wenigen Minuten deine eigene individuelle Website.</p>
-      </div>
-    </div>
-
-    <div class=\"col d-flex align-items-start\">
-      <i class=\"bi bi-box-arrow-down bi-color flex-shrink-0 me-3\" style=\"font-size: 2rem;\"></i>
-      <div>
-        <h3 class=\"fw-bold mb-0 fs-4\">Plugin Installer</h3>
-        <p>Wir bieten dir mit über xx Plugins die Möglichkeit, deine Website individuell zu gestalten.</p>
-      </div>
-    </div>
-
-    <div class=\"col d-flex align-items-start\">
-      <i class=\"bi bi-box-arrow-down bi-color flex-shrink-0 me-3\" style=\"font-size: 2rem;\"></i>
-      <div>
-        <h3 class=\"fw-bold mb-0 fs-4\">Update Installer</h3>
-        <p>Bleib Up2Date! Updates jetzt noch einfacher über den Update Installer zu installieren.</p>
-      </div>
-    </div>
-
-    <div class=\"col d-flex align-items-start\">
-      <i class=\"bi bi-toggles2 bi-color flex-shrink-0 me-3\" style=\"font-size: 2rem;\"></i>
-      <div>
-        <h3 class=\"fw-bold mb-0 fs-4\">Dashboard</h3>
-        <p>Hier kann man alles einstellen. reCAPTCHA, Plugins, Templates usw...</p>
-      </div>
-    </div>
-
-  </div>
-</div>', CURRENT_TIMESTAMP, '');
 -- Ende der Tabelle 'settings_startpage'
 
 -- Tabellenstruktur für Tabelle `settings_static`
@@ -843,7 +722,8 @@ INSERT INTO `user_role_admin_navi_rights` (`id`, `roleID`, `type`, `modulname`, 
 (46, 1, 'link', 'admin_log', 38),
 (47, 1, 'link', 'ac_admin_log', 38),
 (48, 1, 'link', 'carousel', 43),
-(49, 1, 'link', 'ac_update_core', 44);
+(49, 1, 'link', 'ac_update_core', 44),
+(50, 1, 'link', 'ac_headstyle', 44);
 -- Ende der Tabelle 'user_role_admin_navi_rights'
 
 
@@ -991,7 +871,7 @@ CREATE TABLE IF NOT EXISTS settings_headstyle_config (
 );
 
 INSERT INTO `settings_headstyle_config` (`id`, `selected_style`) VALUES
-(1, 'head-style-1');
+(1, 'head-boxes-1');
 -- Ende der Tabelle 'settings_headstyle_config'
 
 -- Tabellenstruktur für Tabelle `comments`
@@ -1025,7 +905,7 @@ CREATE TABLE IF NOT EXISTS ratings (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 -- Ende der Tabelle 'ratings'
 
--- Tabellenstruktur für Tabelle ratings
+-- Tabellenstruktur für Tabelle user_profiles
 CREATE TABLE IF NOT EXISTS user_profiles (
     userID INT UNSIGNED NOT NULL,
     firstname VARCHAR(100) DEFAULT NULL,
@@ -1038,9 +918,12 @@ CREATE TABLE IF NOT EXISTS user_profiles (
     sexuality VARCHAR(100) DEFAULT NULL,
     PRIMARY KEY (userID)
 ) ENGINE=InnoDB;
--- Ende der Tabelle 'comments'
 
--- Tabellenstruktur für Tabelle ratings
+INSERT INTO `user_profiles` (`userID`, `firstname`, `lastname`, `location`, `about_me`, `avatar`, `age`, `gender`, `sexuality`) VALUES
+(1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+-- Ende der Tabelle 'user_profiles'
+
+-- Tabellenstruktur für Tabelle user_stats
 CREATE TABLE IF NOT EXISTS user_stats (
     userID INT UNSIGNED NOT NULL,
     points INT UNSIGNED DEFAULT 0,
@@ -1050,9 +933,9 @@ CREATE TABLE IF NOT EXISTS user_stats (
     total_time_online INT UNSIGNED DEFAULT 0, -- in Sekunden
     PRIMARY KEY (userID)
 ) ENGINE=InnoDB;
--- Ende der Tabelle 'comments'
+-- Ende der Tabelle 'user_stats'
 
--- Tabellenstruktur für Tabelle ratings
+-- Tabellenstruktur für Tabelle user_settings
 CREATE TABLE IF NOT EXISTS user_settings (
     userID INT UNSIGNED NOT NULL,
     language VARCHAR(10) DEFAULT 'de',
@@ -1061,16 +944,37 @@ CREATE TABLE IF NOT EXISTS user_settings (
     private_profile TINYINT(1) DEFAULT 0,
     PRIMARY KEY (userID)
 ) ENGINE=InnoDB;
--- Ende der Tabelle 'comments'
 
--- Tabellenstruktur für Tabelle ratings
+INSERT INTO `user_settings` (`userID`, `language`, `dark_mode`, `email_notifications`, `private_profile`) VALUES
+(1, 'de', 0, 1, 0);
+-- Ende der Tabelle 'user_settings'
+
+-- Tabellenstruktur für Tabelle user_socials
 CREATE TABLE IF NOT EXISTS user_socials (
     userID INT UNSIGNED NOT NULL,
     facebook VARCHAR(255) DEFAULT NULL,
     twitter VARCHAR(255) DEFAULT NULL,
     instagram VARCHAR(255) DEFAULT NULL,
-    discord VARCHAR(255) DEFAULT NULL,
+    website VARCHAR(255) DEFAULT NULL,
     github VARCHAR(255) DEFAULT NULL,
     PRIMARY KEY (userID)
 ) ENGINE=InnoDB;
--- Ende der Tabelle 'comments'
+
+INSERT INTO `user_socials` (`userID`, `facebook`, `twitter`, `instagram`, `website`, `github`) VALUES
+(1, NULL, NULL, NULL, NULL, NULL);
+-- Ende der Tabelle 'user_socials'
+
+-- Tabellenstruktur für Tabelle plugins_installed
+CREATE TABLE IF NOT EXISTS `plugins_installed` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `modulname` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `version` varchar(50) DEFAULT NULL,
+  `author` varchar(255) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `folder` varchar(255) DEFAULT NULL,
+  `installed_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+-- Ende der Tabelle 'plugins_installed'
