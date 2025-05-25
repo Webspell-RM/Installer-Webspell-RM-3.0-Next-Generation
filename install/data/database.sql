@@ -39,35 +39,7 @@ CREATE TABLE IF NOT EXISTS `contact` (
 ) ENGINE=InnoDB;
 -- Ende der Tabelle 'contact'
 
--- Tabellenstruktur für Tabelle `counter`
-CREATE TABLE IF NOT EXISTS `counter` (
-  `hits` int(20) NOT NULL DEFAULT '0',
-  `online` int(14) NOT NULL DEFAULT '0',
-  `maxonline` int(11) NOT NULL
-) ENGINE=InnoDB;
-
-INSERT INTO `counter` (`hits`, `online`, `maxonline`) 
-VALUES (1, UNIX_TIMESTAMP(), 1);
--- Ende der Tabelle 'counter'
-
--- Tabellenstruktur für Tabelle `counter_iplist`
-CREATE TABLE IF NOT EXISTS `counter_iplist` (
-  `date` DATE NOT NULL,
-  `ip` VARCHAR(45) NOT NULL,
-  `deleted` TINYINT(1) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`date`, `ip`)
-) ENGINE=InnoDB;
--- Ende der Tabelle 'counter_iplist'
-
--- Tabellenstruktur für Tabelle `counter_stats`
-CREATE TABLE IF NOT EXISTS `counter_stats` (
-  `date` DATE NOT NULL,
-  `count` INT UNSIGNED NOT NULL DEFAULT 0,
-  PRIMARY KEY (`date`)
-) ENGINE=InnoDB;
--- Ende der Tabelle 'counter_stats'
-
- -- Tabellenstruktur für Tabelle `email` 
+-- Tabellenstruktur für Tabelle `email` 
 CREATE TABLE IF NOT EXISTS `email` (
   `emailID` int(1) NOT NULL,
   `user` varchar(255) NOT NULL,
@@ -139,27 +111,25 @@ INSERT INTO `navigation_dashboard_links` (`linkID`, `catID`, `modulname`, `name`
 (5, 1, 'ac_dashboard_navigation', '[[lang:de]]Admincenter Navigation[[lang:en]]Admincenter Navigation[[lang:it]]Menu Navigazione Admin', 'admincenter.php?site=dashboard_navigation', 5),
 (6, 1, 'ac_email', '[[lang:de]]E-Mail[[lang:en]]E-Mail[[lang:it]]E-Mail', 'admincenter.php?site=email', 6),
 (7, 1, 'ac_contact', '[[lang:de]]Kontakte[[lang:en]]Contacts[[lang:it]]Contatti', 'admincenter.php?site=contact', 7),
-(8, 1, 'ac_modrewrite', '[[lang:de]]Mod-Rewrite[[lang:en]]Mod-Rewrite[[lang:it]]Mod-Rewrite', 'admincenter.php?site=modrewrite', 8),
-(9, 1, 'ac_database', '[[lang:de]]Datenbank[[lang:en]]Database[[lang:it]]Database', 'admincenter.php?site=database', 9),
-(10, 1, 'ac_update', '[[lang:de]]Webspell-RM Update[[lang:en]]Webspell-RM Update[[lang:it]]Aggiornamento Webspell-RM', 'admincenter.php?site=update', 10),
-(11, 5, 'ac_webside_navigation', '[[lang:de]]Webseiten Navigation[[lang:en]]Website Navigation[[lang:it]]Menu Navigazione Web', 'admincenter.php?site=webside_navigation', 1),
-(12, 5, 'ac_themes_installer', '[[lang:de]]Themes Installer[[lang:en]]Themes Installer[[lang:it]]Installazione Themes', 'admincenter.php?site=themes_installer', 2),
-(13, 5, 'ac_themes', '[[lang:de]]Themes[[lang:en]]Themes[[lang:it]]Temi', 'admincenter.php?site=theme', 3),
-(14, 5, 'ac_startpage', '[[lang:de]]Startseite[[lang:en]]Start Page[[lang:it]]Pagina Principale', 'admincenter.php?site=settings_startpage', 5),
-(15, 5, 'ac_static', '[[lang:de]]Statische Seiten[[lang:en]]Static Pages[[lang:it]]Pagine Statiche', 'admincenter.php?site=settings_static', 6),
-(16, 5, 'ac_imprint', '[[lang:de]]Impressum[[lang:en]]Imprint[[lang:it]]Impronta Editoriale', 'admincenter.php?site=settings_imprint', 7),
-(17, 5, 'ac_privacy_policy', '[[lang:de]]Datenschutz-Bestimmungen[[lang:en]]Privacy Policy[[lang:it]]Informativa sulla Privacy', 'admincenter.php?site=settings_privacy_policy', 8),
-(18, 6, 'ac_plugin_manager', '[[lang:de]]Plugin & Widget Manager[[lang:en]]Plugin & Widget Manager[[lang:it]]Gestore di Plugin e Widget', 'admincenter.php?site=plugin_manager', 1),
-(19, 6, 'ac_plugin_installer', '[[lang:de]]Plugin Installer[[lang:en]]Plugin Installer[[lang:it]]Installazione Plugin', 'admincenter.php?site=plugin_installer', 2),
-(20, 1, 'ac_editlang', '[[lang:de]]Spracheditor[[lang:en]]Language Editor[[lang:it]]Editor di Linguaggi', 'admincenter.php?site=editlang', 11),
-(21, 7, 'footer_easy', '[[lang:de]]Footer Easy[[lang:en]]Footer Easy[[lang:it]]PiÃ¨ di pagina Easy', 'admincenter.php?site=admin_footer_easy', 0),
-(22, 3, 'ac_admin_security', '[[lang:de]]Admin Security[[lang:en]]Admin Security[[lang:it]]Sicurezza Admin', 'admincenter.php?site=admin_security', 2),
-(23, 3, 'ac_user_roles', '[[lang:de]]Registrierte Benutzer und Rollen[[lang:en]]Registered users and Roles[[lang:it]]Utenti registrati e ruoli', 'admincenter.php?site=user_roles', 3),
-(24, 3, 'role_permissions', '[[lang:de]]Rollenberechtigungen[[lang:en]]Role Permissions[[lang:it]]Permessi dei ruoli', 'admincenter.php?site=admin_role_permissions', 1),
-(25, 1, 'ac_db_stats', '[[lang:de]]Statistiken über Besucher und Seitenzugriffe[[lang:en]]Statistics about visitors and page views[[lang:it]]Statistiche su visitatori e visualizzazioni di pagina', 'admincenter.php?site=db_stats', 1),
-(26, 3, 'ac_admin_log', '[[lang:de]]Admin-Protokoll[[lang:en]]Admin Log[[lang:it]]Registro Admin', 'admincenter.php?site=admin_log', 1),
-(27, 1, 'ac_update_core', '[[lang:de]]Core aktualisieren[[lang:en]]Update Core[[lang:it]]Aggiorna Core', 'admincenter.php?site=update_core', 1),
-(28, 5, 'ac_headstyle', '[[lang:de]]Kopfzeilen-Stil[[lang:en]]Head Style[[lang:it]]Stile intestazione', 'admincenter.php?site=admin_headstyle', 1);
+(8, 1, 'ac_database', '[[lang:de]]Datenbank[[lang:en]]Database[[lang:it]]Database', 'admincenter.php?site=database', 9),
+(9, 5, 'ac_webside_navigation', '[[lang:de]]Webseiten Navigation[[lang:en]]Website Navigation[[lang:it]]Menu Navigazione Web', 'admincenter.php?site=webside_navigation', 1),
+(10, 5, 'ac_themes_installer', '[[lang:de]]Themes Installer[[lang:en]]Themes Installer[[lang:it]]Installazione Themes', 'admincenter.php?site=themes_installer', 2),
+(11, 5, 'ac_themes', '[[lang:de]]Themes[[lang:en]]Themes[[lang:it]]Temi', 'admincenter.php?site=theme', 3),
+(12, 5, 'ac_startpage', '[[lang:de]]Startseite[[lang:en]]Start Page[[lang:it]]Pagina Principale', 'admincenter.php?site=settings_startpage', 5),
+(13, 5, 'ac_static', '[[lang:de]]Statische Seiten[[lang:en]]Static Pages[[lang:it]]Pagine Statiche', 'admincenter.php?site=settings_static', 6),
+(14, 5, 'ac_imprint', '[[lang:de]]Impressum[[lang:en]]Imprint[[lang:it]]Impronta Editoriale', 'admincenter.php?site=settings_imprint', 7),
+(15, 5, 'ac_privacy_policy', '[[lang:de]]Datenschutz-Bestimmungen[[lang:en]]Privacy Policy[[lang:it]]Informativa sulla Privacy', 'admincenter.php?site=settings_privacy_policy', 8),
+(16, 6, 'ac_plugin_manager', '[[lang:de]]Plugin & Widget Manager[[lang:en]]Plugin & Widget Manager[[lang:it]]Gestore di Plugin e Widget', 'admincenter.php?site=plugin_manager', 1),
+(17, 6, 'ac_plugin_installer', '[[lang:de]]Plugin Installer[[lang:en]]Plugin Installer[[lang:it]]Installazione Plugin', 'admincenter.php?site=plugin_installer', 2),
+(18, 1, 'ac_editlang', '[[lang:de]]Spracheditor[[lang:en]]Language Editor[[lang:it]]Editor di Linguaggi', 'admincenter.php?site=editlang', 11),
+(19, 7, 'footer_easy', '[[lang:de]]Footer Easy[[lang:en]]Footer Easy[[lang:it]]PiÃƒÂ¨ di pagina Easy', 'admincenter.php?site=admin_footer_easy', 0),
+(20, 3, 'ac_security_overview', '[[lang:de]]Admin Security[[lang:en]]Admin Security[[lang:it]]Sicurezza Admin', 'admincenter.php?site=security_overview', 2),
+(21, 3, 'ac_user_roles', '[[lang:de]]Registrierte Benutzer und Rollen[[lang:en]]Registered users and Roles[[lang:it]]Utenti registrati e ruoli', 'admincenter.php?site=user_roles', 3),
+(22, 3, 'role_permissions', '[[lang:de]]Rollenberechtigungen[[lang:en]]Role Permissions[[lang:it]]Permessi dei ruoli', 'admincenter.php?site=admin_role_permissions', 1),
+(23, 1, 'ac_db_stats', '[[lang:de]]Statistiken Ã¼ber Besucher und Seitenzugriffe[[lang:en]]Statistics about visitors and page views[[lang:it]]Statistiche su visitatori e visualizzazioni di pagina', 'admincenter.php?site=db_stats', 1),
+(24, 3, 'ac_admin_log', '[[lang:de]]Admin-Protokoll[[lang:en]]Admin Log[[lang:it]]Registro Admin', 'admincenter.php?site=admin_log', 1),
+(25, 1, 'ac_update_core', '[[lang:de]]Core aktualisieren[[lang:en]]Update Core[[lang:it]]Aggiorna Core', 'admincenter.php?site=update_core', 1),
+(26, 5, 'ac_headstyle', '[[lang:de]]Kopfzeilen-Stil[[lang:en]]Head Style[[lang:it]]Stile intestazione', 'admincenter.php?site=admin_headstyle', 1);
 -- Ende der Tabelle 'navigation_dashboard_links'
 
 -- Tabellenstruktur für Tabelle `navigation_website_main`
@@ -674,9 +644,8 @@ CREATE TABLE IF NOT EXISTS `user_role_admin_navi_rights` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_access` (`roleID`, `type`, `modulname`),
   CONSTRAINT `user_role_admin_navi_rights_ibfk_1` FOREIGN KEY (`roleID`) REFERENCES `user_roles` (`roleID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=42;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `user_role_admin_navi_rights` (`id`, `roleID`, `type`, `modulname`, `accessID`) VALUES
 INSERT INTO `user_role_admin_navi_rights` (`id`, `roleID`, `type`, `modulname`, `accessID`) VALUES
 (1, 1, 'link', 'ac_overview', 1),
 (2, 1, 'link', 'ac_visitor_statistic', 3),
@@ -684,42 +653,40 @@ INSERT INTO `user_role_admin_navi_rights` (`id`, `roleID`, `type`, `modulname`, 
 (4, 1, 'link', 'ac_dashboard_navigation', 5),
 (5, 1, 'link', 'ac_email', 6),
 (6, 1, 'link', 'ac_contact', 7),
-(7, 1, 'link', 'ac_database', 9),
+(7, 1, 'link', 'ac_database', 8),
 (8, 1, 'link', 'ac_users', 11),
-(9, 1, 'link', 'ac_themes', 13),
-(10, 1, 'link', 'ac_startpage', 14),
-(11, 1, 'link', 'ac_static', 15),
-(12, 1, 'link', 'ac_imprint', 16),
-(13, 1, 'link', 'ac_privacy_policy', 17),
-(14, 1, 'link', 'ac_plugin_manager', 18),
-(15, 1, 'link', 'ac_plugin_installer', 19),
-(16, 1, 'link', 'ac_editlang', 20),
-(17, 1, 'link', 'footer_easy', 21),
-(18, 1, 'link', 'ac_user_roles', 23),
-(19, 1, 'link', 'ac_webside_navigation', 11),
-(20, 1, 'link', 'clan_rules', 35),
-(21, 1, 'link', 'ac_themes_installer', 12),
-(22, 1, 'link', 'ac_db_stats', 25),
-(23, 1, 'link', 'ac_admin_log', 26),
-(24, 1, 'link', 'carousel', 43),
-(25, 1, 'link', 'ac_update_core', 27),
-(26, 1, 'link', 'ac_headstyle', 28),
-(27, 1, 'link', 'ac_page_statistic', 2),
-(28, 1, 'link', 'ac_role_permissions', 24),
+(9, 1, 'link', 'ac_themes', 11),
+(10, 1, 'link', 'ac_startpage', 12),
+(11, 1, 'link', 'ac_static', 13),
+(12, 1, 'link', 'ac_imprint', 14),
+(13, 1, 'link', 'ac_privacy_policy', 15),
+(14, 1, 'link', 'ac_plugin_manager', 16),
+(15, 1, 'link', 'ac_plugin_installer', 17),
+(16, 1, 'link', 'ac_editlang', 18),
+(17, 1, 'link', 'footer_easy', 19),
+(18, 1, 'link', 'ac_user_roles', 21),
+(19, 1, 'link', 'ac_webside_navigation', 9),
+(21, 1, 'link', 'ac_themes_installer', 10),
+(22, 1, 'link', 'ac_db_stats', 23),
+(23, 1, 'link', 'ac_admin_log', 24),
+(25, 1, 'link', 'ac_update_core', 25),
+(26, 1, 'link', 'ac_headstyle', 26),
+(28, 1, 'link', 'ac_role_permissions', 22),
 (29, 1, 'link', 'ac_statistik', 2),
-(30, 1, 'link', 'ac_security_overview', 29),
-(31, 1, 'category', 'cat_webinfo', 1),
-(32, 1, 'category', 'cat_admin', 3),
-(33, 1, 'category', 'cat_team', 4),
-(34, 1, 'category', 'cat_theme', 5),
-(35, 1, 'category', 'cat_plugin', 6),
-(36, 1, 'category', 'cat_web_content', 7),
-(37, 1, 'category', 'cat_slider', 9),
+(30, 1, 'link', 'ac_security_overview', 20),
+(32, 1, 'category', 'cat_webinfo', 1),
+(33, 1, 'category', 'cat_admin', 3),
+(34, 1, 'category', 'cat_team', 4),
+(35, 1, 'category', 'cat_theme', 5),
+(36, 1, 'category', 'cat_plugin', 6),
+(37, 1, 'category', 'cat_web_content', 7),
+(38, 1, 'category', 'cat_slider', 9),
 (39, 1, 'category', 'cat_social', 11),
 (40, 1, 'category', 'cat_link', 12),
 (41, 1, 'category', 'cat_spam', 2),
-(42, 1, 'category', 'cat_game', 10),
-(43, 1, 'category', 'cat_gallery', 8);
+(42, 1, 'category', 'cat_gallery', 8),
+(43, 1, 'category', 'cat_game', 10),
+(44, 1, 'link', 'ac_statistic', 1);
 -- Ende der Tabelle 'user_role_admin_navi_rights'
 
 
@@ -772,24 +739,6 @@ CREATE TABLE IF NOT EXISTS `user_visitors` (
   `date` int(14) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB;
 -- Ende der Tabelle 'user_visitors'
-
--- Tabellenstruktur für Tabelle `whoisonline`
-CREATE TABLE IF NOT EXISTS `whoisonline` (
-  `time` int(14) NOT NULL DEFAULT '0',
-  `ip` varchar(20) NOT NULL,
-  `userID` int(11) NOT NULL DEFAULT '0',
-  `site` varchar(255) NOT NULL
-) ENGINE=InnoDB;
--- Ende der Tabelle 'whoisonline'
-
--- Tabellenstruktur für Tabelle `whowasonline`
-CREATE TABLE IF NOT EXISTS `whowasonline` (
-  `time` int(14) NOT NULL DEFAULT '0',
-  `ip` varchar(20) NOT NULL,
-  `userID` int(11) NOT NULL DEFAULT '0',
-  `site` varchar(255) NOT NULL
-) ENGINE=InnoDB;
--- Ende der Tabelle 'whowasonline'
 
 -- Tabellenstruktur für Tabelle `visitor_statistics`
 CREATE TABLE IF NOT EXISTS `visitor_statistics` (
