@@ -972,6 +972,8 @@ CREATE TABLE IF NOT EXISTS `settings_themes` (
   `version` varchar(11) NOT NULL,
   `active` int(11) DEFAULT NULL,
   `themename` varchar(255) NOT NULL,
+  `navbar_class` varchar(50) NOT NULL,
+  `navbar_theme` varchar(10) NOT NULL,
   `express_active` int(11) NOT NULL DEFAULT '0',
   `logo_pic` varchar(255) DEFAULT '0',
   `reg_pic` varchar(255) NOT NULL,
@@ -980,8 +982,8 @@ CREATE TABLE IF NOT EXISTS `settings_themes` (
   PRIMARY KEY (`themeID`)
 ) ENGINE=InnoDB;
 
-INSERT INTO `settings_themes` (`themeID`, `name`, `modulname`, `pfad`, `version`, `active`, `themename`, `express_active`, `logo_pic`, `reg_pic`, `headlines`, `sort`) VALUES
-(1, 'Default', 'default', 'default', '0.3', 1, 'cyborg', 0, 'default_logo.png', 'default_login_bg.jpg', 'headlines_03.css', 1);
+INSERT INTO `settings_themes` (`themeID`, `name`, `modulname`, `pfad`, `version`, `active`, `themename`, `navbar_class`, `navbar_theme`, `express_active`, `logo_pic`, `reg_pic`, `headlines`, `sort`) VALUES
+(1, 'Default', 'default', 'default', '0.3', 1, 'lux', 'bg-primary', 'dark', 0, 'default_logo.png', 'default_login_bg.jpg', 'headlines_03.css', 1);
 -- Ende der Tabelle 'settings_themes'
 
 -- Tabellenstruktur für Tabelle `settings_headstyle_config`
