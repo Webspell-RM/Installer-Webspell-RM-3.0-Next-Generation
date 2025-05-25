@@ -1,4 +1,4 @@
--- Webspell-RM 2.1.7 - Datenbankbasis
+-- Webspell-RM 3.0 - Datenbankbasis
 
 
 
@@ -520,14 +520,14 @@ INSERT IGNORE INTO `settings_social_media` (`socialID`, `twitch`, `facebook`, `t
 
 -- Tabellenstruktur für Tabelle `settings_startpage`
 CREATE TABLE IF NOT EXISTS `settings_startpage` (
-  `pageID` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `title` varchar(255) NOT NULL,
-  `startpage_text` longtext NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp(),
-  `editor` int(1) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pageID` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `title` VARCHAR(255) NOT NULL,
+  `startpage_text` LONGTEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `editor` TINYINT(1) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT IGNORE INTO settings_startpage (`pageID`, `title`, `startpage_text`, `date`, `editor`) VALUES
+INSERT IGNORE INTO settings_startpage (pageID, title, startpage_text, date, editor) VALUES
 (1, 'Next-Generation', 
 '<div class=\"container px-4 py-5\" id=\"icon-grid\">
   <h6 class=\"pb-2 border-bottom\">Webspell RM (Next-Generation)</h6>
@@ -600,8 +600,6 @@ INSERT IGNORE INTO settings_startpage (`pageID`, `title`, `startpage_text`, `dat
 
   </div>
 </div>', CURRENT_TIMESTAMP, '');
-
-
 -- Ende der Tabelle 'settings_startpage'
 
 -- Tabellenstruktur für Tabelle `settings_static`
@@ -741,7 +739,7 @@ INSERT INTO `user_roles` (`roleID`, `role_name`, `description`, `is_default`) VA
 (11, 'Gast', 'Öffentlicher Besucher ohne Login', 0),
 (12, 'Registrierter Benutzer', 'Angemeldet, aber nicht im Clan', 0),
 (13, 'Ehrenmitglied', 'Ehemalige Mitglieder mit besonderem Status', 0),
-(14, 'Streamer', 'Darf Stream-Ank&uuml;ndigungen posten', 0),
+(14, 'Streamer', 'Darf Stream-Ankündigungen posten', 0),
 (15, 'Designer', 'Erstellt oder pflegt Grafiken und Layouts', 0),
 (16, 'Techniker', 'Hat Zugriff auf technische Einstellungen', 0);
 -- Ende der Tabelle 'user_roles'
@@ -991,6 +989,9 @@ CREATE TABLE IF NOT EXISTS settings_headstyle_config (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   selected_style VARCHAR(32) NOT NULL DEFAULT 'head-style-1'
 );
+
+INSERT INTO `settings_headstyle_config` (`id`, `selected_style`) VALUES
+(1, 'head-style-1');
 -- Ende der Tabelle 'settings_headstyle_config'
 
 -- Tabellenstruktur für Tabelle `comments`
@@ -1023,3 +1024,53 @@ CREATE TABLE IF NOT EXISTS ratings (
   CONSTRAINT fk_global_ratings_user FOREIGN KEY (userID) REFERENCES users (userID) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 -- Ende der Tabelle 'ratings'
+
+-- Tabellenstruktur für Tabelle ratings
+CREATE TABLE IF NOT EXISTS user_profiles (
+    userID INT UNSIGNED NOT NULL,
+    firstname VARCHAR(100) DEFAULT NULL,
+    lastname VARCHAR(100) DEFAULT NULL,
+    location VARCHAR(150) DEFAULT NULL,
+    about_me TEXT DEFAULT NULL,
+    avatar VARCHAR(255) DEFAULT NULL,
+    age INT UNSIGNED DEFAULT NULL,
+    gender VARCHAR(50) DEFAULT NULL,
+    sexuality VARCHAR(100) DEFAULT NULL,
+    PRIMARY KEY (userID)
+) ENGINE=InnoDB;
+-- Ende der Tabelle 'comments'
+
+-- Tabellenstruktur für Tabelle ratings
+CREATE TABLE IF NOT EXISTS user_stats (
+    userID INT UNSIGNED NOT NULL,
+    points INT UNSIGNED DEFAULT 0,
+    lastlogin DATETIME DEFAULT NULL,
+    registerdate DATETIME DEFAULT CURRENT_TIMESTAMP,
+    logins_count INT UNSIGNED DEFAULT 0,
+    total_time_online INT UNSIGNED DEFAULT 0, -- in Sekunden
+    PRIMARY KEY (userID)
+) ENGINE=InnoDB;
+-- Ende der Tabelle 'comments'
+
+-- Tabellenstruktur für Tabelle ratings
+CREATE TABLE IF NOT EXISTS user_settings (
+    userID INT UNSIGNED NOT NULL,
+    language VARCHAR(10) DEFAULT 'de',
+    dark_mode TINYINT(1) DEFAULT 0,
+    email_notifications TINYINT(1) DEFAULT 1,
+    private_profile TINYINT(1) DEFAULT 0,
+    PRIMARY KEY (userID)
+) ENGINE=InnoDB;
+-- Ende der Tabelle 'comments'
+
+-- Tabellenstruktur für Tabelle ratings
+CREATE TABLE IF NOT EXISTS user_socials (
+    userID INT UNSIGNED NOT NULL,
+    facebook VARCHAR(255) DEFAULT NULL,
+    twitter VARCHAR(255) DEFAULT NULL,
+    instagram VARCHAR(255) DEFAULT NULL,
+    discord VARCHAR(255) DEFAULT NULL,
+    github VARCHAR(255) DEFAULT NULL,
+    PRIMARY KEY (userID)
+) ENGINE=InnoDB;
+-- Ende der Tabelle 'comments'
