@@ -483,8 +483,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   `is_locked` tinyint(1) NOT NULL DEFAULT 0,
   `activation_code` varchar(64) DEFAULT NULL,
   `activation_expires` int(11) DEFAULT NULL,
-  `banned` varchar(255) DEFAULT NULL,
-  `ban_reason` varchar(255) NOT NULL,
   `avatar` varchar(255) DEFAULT 'noavatar.png',
   `firstname` varchar(255) NOT NULL,
   `lastname` varchar(255) NOT NULL,
