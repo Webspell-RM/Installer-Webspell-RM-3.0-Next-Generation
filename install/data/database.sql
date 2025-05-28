@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `navigation_dashboard_links` (
 
 INSERT INTO `navigation_dashboard_links` (`linkID`, `catID`, `modulname`, `name`, `url`, `sort`) VALUES
 (1, 1, 'ac_overview', '[[lang:de]]Webserver-Info[[lang:en]]Webserver Info[[lang:it]]Informazioni Sul Sito', 'admincenter.php?site=overview', 1),
-(2, 1, 'ac_page_statistic', '[[lang:de]]Seiten Statistiken[[lang:en]]Page Statistics[[lang:it]]Pagina delle Statistiche', 'admincenter.php?site=statistic', 2),
+(2, 1, 'ac_statistic', '[[lang:de]]Seiten Statistiken[[lang:en]]Page Statistics[[lang:it]]Pagina delle Statistiche', 'admincenter.php?site=statistic', 2),
 (3, 1, 'ac_visitor_statistic', '[[lang:de]]Besucher Statistiken[[lang:en]]Visitor Statistics[[lang:it]]Statistiche Visitatori', 'admincenter.php?site=visitor_statistic', 3),
 (4, 1, 'ac_settings', '[[lang:de]]Allgemeine Einstellungen[[lang:en]]General Settings[[lang:it]]Impostazioni Generali', 'admincenter.php?site=settings', 4),
 (5, 1, 'ac_dashboard_navigation', '[[lang:de]]Admincenter Navigation[[lang:en]]Admincenter Navigation[[lang:it]]Menu Navigazione Admin', 'admincenter.php?site=dashboard_navigation', 5),
@@ -114,7 +114,7 @@ INSERT INTO `navigation_dashboard_links` (`linkID`, `catID`, `modulname`, `name`
 (8, 1, 'ac_database', '[[lang:de]]Datenbank[[lang:en]]Database[[lang:it]]Database', 'admincenter.php?site=database', 9),
 (9, 5, 'ac_webside_navigation', '[[lang:de]]Webseiten Navigation[[lang:en]]Website Navigation[[lang:it]]Menu Navigazione Web', 'admincenter.php?site=webside_navigation', 1),
 (10, 5, 'ac_themes_installer', '[[lang:de]]Themes Installer[[lang:en]]Themes Installer[[lang:it]]Installazione Themes', 'admincenter.php?site=themes_installer', 2),
-(11, 5, 'ac_themes', '[[lang:de]]Themes[[lang:en]]Themes[[lang:it]]Temi', 'admincenter.php?site=theme', 3),
+(11, 5, 'ac_theme', '[[lang:de]]Themes[[lang:en]]Themes[[lang:it]]Temi', 'admincenter.php?site=theme', 3),
 (12, 5, 'ac_startpage', '[[lang:de]]Startseite[[lang:en]]Start Page[[lang:it]]Pagina Principale', 'admincenter.php?site=settings_startpage', 5),
 (13, 5, 'ac_static', '[[lang:de]]Statische Seiten[[lang:en]]Static Pages[[lang:it]]Pagine Statiche', 'admincenter.php?site=settings_static', 6),
 (14, 5, 'ac_imprint', '[[lang:de]]Impressum[[lang:en]]Imprint[[lang:it]]Impronta Editoriale', 'admincenter.php?site=settings_imprint', 7),
@@ -125,7 +125,7 @@ INSERT INTO `navigation_dashboard_links` (`linkID`, `catID`, `modulname`, `name`
 (19, 7, 'footer_easy', '[[lang:de]]Footer Easy[[lang:en]]Footer Easy[[lang:it]]PiÃƒÂ¨ di pagina Easy', 'admincenter.php?site=admin_footer_easy', 0),
 (20, 3, 'ac_security_overview', '[[lang:de]]Admin Security[[lang:en]]Admin Security[[lang:it]]Sicurezza Admin', 'admincenter.php?site=security_overview', 2),
 (21, 3, 'ac_user_roles', '[[lang:de]]Registrierte Benutzer und Rollen[[lang:en]]Registered users and Roles[[lang:it]]Utenti registrati e ruoli', 'admincenter.php?site=user_roles', 3),
-(22, 3, 'role_permissions', '[[lang:de]]Rollenberechtigungen[[lang:en]]Role Permissions[[lang:it]]Permessi dei ruoli', 'admincenter.php?site=admin_role_permissions', 1),
+(22, 3, 'ac_role_permissions', '[[lang:de]]Rollenberechtigungen[[lang:en]]Role Permissions[[lang:it]]Permessi dei ruoli', 'admincenter.php?site=admin_role_permissions', 1),
 (23, 1, 'ac_db_stats', '[[lang:de]]Besucher / Seitenzugriffe[[lang:en]]Visitors / Pageviews[[lang:it]]Visitatori / Visualizzazioni di pagina', 'admincenter.php?site=db_stats', 1),
 (24, 3, 'ac_admin_log', '[[lang:de]]Admin-Protokoll[[lang:en]]Admin Log[[lang:it]]Registro Admin', 'admincenter.php?site=admin_log', 1),
 (25, 1, 'ac_update_core', '[[lang:de]]Core aktualisieren[[lang:en]]Update Core[[lang:it]]Aggiorna Core', 'admincenter.php?site=update_core', 1),
@@ -661,8 +661,7 @@ INSERT INTO `user_role_admin_navi_rights` (`id`, `roleID`, `type`, `modulname`, 
 (39, 1, 'link', 'ac_statistic', 2),
 (40, 1, 'link', 'ac_site_lock', 0),
 (41, 1, 'link', 'ac_theme_preview', 0),
-(42, 1, 'link', 'ac_theme_save', 0),
-(43, 1, 'link', 'role_permissions', 22);
+(42, 1, 'link', 'ac_theme_save', 0);
 -- Ende der Tabelle 'user_role_admin_navi_rights'
 
 -- Tabellenstruktur für Tabelle `user_role_permissions`
