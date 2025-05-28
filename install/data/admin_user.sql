@@ -1,3 +1,6 @@
+-- Webspell-RM 3.0 - Datenbankbasis
+-- 28.05.2025
+
 INSERT INTO `users` (`registerdate`, `lastlogin`, `password_hash`, `password_pepper`, `username`, `email`, `email_hide`, `email_change`, `email_activate`, `role`, `is_active`, `is_locked`, `activation_code`, `activation_expires`, `avatar`, `firstname`, `lastname`, `gender`, `town`, `birthday`, `facebook`, `twitter`, `twitch`, `steam`, `instagram`, `youtube`, `discord`, `userpic`, `homepage`, `about`, `pmgot`, `pmsent`, `visits`, `language`, `last_update`) VALUES
 (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '{{adminpass}}', '{{adminpepper}}', '{{adminuser}}', '{{adminmail}}', 1, '', '', 1, 1, 0, NULL, NULL, 'noavatar.png', '', '', 'select_gender', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 0, '', NULL);
 

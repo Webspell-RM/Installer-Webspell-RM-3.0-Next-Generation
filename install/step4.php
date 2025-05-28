@@ -55,62 +55,61 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webspell-RM Installation – Schritt 3</title>
+    <title>Webspell-RM Installation – Schritt 4</title>
     <link href="/install/css/bootstrap.min.css" rel="stylesheet">
     <link href="/install/css/installer.css" rel="stylesheet">
 </head>
 <body>
     <div class="container my-5">
-    <div class="text-center">
-        <img src="/install/images/logo.png" alt="Webspell-RM Logo" class="install-logo mb-4">
-        <h2>Schritt 4: Datenbankstruktur importieren</h2>
+        <div class="text-center">
+            <img src="/install/images/logo.png" alt="Webspell-RM Logo" class="install-logo mb-4">
+            <h2>Schritt 4: Datenbankstruktur importieren</h2>
+        </div>
+
+        <div class="card shadow-sm border-0 mt-4">
+            <div class="card-body">
+                <h3>Datenbankstruktur importieren – Schritt 4</h3>
+
+                <?php if (!$success): ?>
+                    <p>Mit einem Klick wird die grundlegende Datenbankstruktur von Webspell-RM automatisch eingerichtet. Dabei werden alle erforderlichen Tabellen, Standardwerte und Konfigurationsdaten aus der Datei <code>install/database.sql</code> in deine MySQL-Datenbank importiert.</p>
+
+                    <p>Dieser Schritt ist essenziell, damit Webspell-RM korrekt funktioniert. Es werden unter anderem folgende Inhalte angelegt:</p>
+                    <ul>
+                        <li>Systemtabellen für Benutzer, Rollen und Zugriffsrechte</li>
+                        <li>Grundeinstellungen des Systems und Standardmodule</li>
+                        <li>Beispielinhalte zur besseren Orientierung</li>
+                    </ul>
+
+                    <p>Stelle sicher, dass deine Datenbankverbindung korrekt eingerichtet ist und dein Benutzer die nötigen Berechtigungen zum Erstellen von Tabellen hat.</p>
+                    <p>Nach dem erfolgreichen Import wirst du automatisch zum nächsten Schritt weitergeleitet, um dein Admin-Konto anzulegen.</p>
+
+                    <form method="post">
+                        <input type="submit" class="btn btn-primary btn-lg w-100" value="Datenbank importieren">
+                    </form>
+                <?php endif; ?>
+
+                <?php if ($error): ?>
+                    <div class="alert alert-danger mt-3">
+                        <?= htmlspecialchars($error) ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if ($success): ?>
+                    <div class="alert alert-success mt-3">
+                        ✅ Import erfolgreich!
+                    </div>
+                    <a href="step5.php" class="btn btn-primary btn-lg w-100">Weiter zu Schritt 5 (Admin-Konto)</a>
+                <?php endif; ?>
+            </div>
+
+            <div class="card-footer text-center text-muted small">
+                &copy; <?= date("Y") ?> Webspell-RM Installer
+            </div>
+        </div>
     </div>
 
-    <div class="card shadow-sm border-0 mt-4">
-        <div class="card-body">
-
-    <h3>Datenbankstruktur importieren - Schritt 4</h3>
-
-   
-                    <?php if (!$success): ?>
-                        <p>Mit einem Klick wird die grundlegende Datenbankstruktur von Webspell-RM automatisch eingerichtet. Dabei werden alle erforderlichen Tabellen, Standardwerte und Konfigurationsdaten aus der Datei <code>install/database.sql</code> in deine MySQL-Datenbank importiert.</p>
-
-<p>Dieser Schritt ist essenziell, damit Webspell-RM korrekt funktioniert. Es werden unter anderem folgende Inhalte angelegt:</p>
-<ul>
-    <li>Systemtabellen für Benutzer, Rollen und Zugriffsrechte</li>
-    <li>Grundeinstellungen des Systems und Standardmodule</li>
-    <li>Beispielinhalte zur besseren Orientierung</li>
-</ul>
-
-<p>Stelle sicher, dass deine Datenbankverbindung korrekt eingerichtet ist und dein Benutzer die nötigen Berechtigungen zum Erstellen von Tabellen hat.</p>
-<p>Nach dem erfolgreichen Import wirst du automatisch zum nächsten Schritt weitergeleitet, um dein Admin-Konto anzulegen.</p>
-
-                        <form method="post">
-                            <input type="submit" class="btn btn-primary btn-lg w-100" value="Datenbank importieren">
-                        </form>
-                    <?php endif; ?>
-
-                    <?php if ($error): ?>
-                        <div class="alert alert-danger mt-3"><?= htmlspecialchars($error) ?></div>
-                    <?php endif; ?>
-
-                    <?php if ($success): ?>
-                        <div class="alert alert-success mt-3">
-                            ✅ Import erfolgreich!
-                            </div>
-                            <a href="step5.php" class="btn btn-primary btn-lg w-100">Weiter zu Schritt 5 (Admin-Konto)</a>
-                        
-                    <?php endif; ?>
-                
-    </div>
-    
-
-    <div class="card-footer text-center text-muted small">
-                            &copy; <?= date("Y") ?> Webspell-RM Installer
-                        </div>
-</div>
-
-<script src="/install/js/bootstrap.bundle.min.js"></script>
+    <script src="/install/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
 

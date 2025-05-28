@@ -1,5 +1,5 @@
 -- Webspell-RM 3.0 - Datenbankbasis
-
+-- 28.05.2025
 
 
 -- Tabellenstruktur für Tabelle `logs`
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `navigation_dashboard_links` (
 
 INSERT INTO `navigation_dashboard_links` (`linkID`, `catID`, `modulname`, `name`, `url`, `sort`) VALUES
 (1, 1, 'ac_overview', '[[lang:de]]Webserver-Info[[lang:en]]Webserver Info[[lang:it]]Informazioni Sul Sito', 'admincenter.php?site=overview', 1),
-(2, 1, 'ac_page_statistic', '[[lang:de]]Seiten Statistiken[[lang:en]]Page Statistics[[lang:it]]Pagina delle Statistiche', 'admincenter.php?site=statistik', 2),
+(2, 1, 'ac_page_statistic', '[[lang:de]]Seiten Statistiken[[lang:en]]Page Statistics[[lang:it]]Pagina delle Statistiche', 'admincenter.php?site=statistic', 2),
 (3, 1, 'ac_visitor_statistic', '[[lang:de]]Besucher Statistiken[[lang:en]]Visitor Statistics[[lang:it]]Statistiche Visitatori', 'admincenter.php?site=visitor_statistic', 3),
 (4, 1, 'ac_settings', '[[lang:de]]Allgemeine Einstellungen[[lang:en]]General Settings[[lang:it]]Impostazioni Generali', 'admincenter.php?site=settings', 4),
 (5, 1, 'ac_dashboard_navigation', '[[lang:de]]Admincenter Navigation[[lang:en]]Admincenter Navigation[[lang:it]]Menu Navigazione Admin', 'admincenter.php?site=dashboard_navigation', 5),
@@ -126,7 +126,7 @@ INSERT INTO `navigation_dashboard_links` (`linkID`, `catID`, `modulname`, `name`
 (20, 3, 'ac_security_overview', '[[lang:de]]Admin Security[[lang:en]]Admin Security[[lang:it]]Sicurezza Admin', 'admincenter.php?site=security_overview', 2),
 (21, 3, 'ac_user_roles', '[[lang:de]]Registrierte Benutzer und Rollen[[lang:en]]Registered users and Roles[[lang:it]]Utenti registrati e ruoli', 'admincenter.php?site=user_roles', 3),
 (22, 3, 'role_permissions', '[[lang:de]]Rollenberechtigungen[[lang:en]]Role Permissions[[lang:it]]Permessi dei ruoli', 'admincenter.php?site=admin_role_permissions', 1),
-(23, 1, 'ac_db_stats', '[[lang:de]]Statistiken Besucher / Seitenzugriffe[[lang:en]]Statistics Visitors / Page Views[[lang:it]]Statistiche Visitatori / Visualizzazioni di pagina', 'admincenter.php?site=db_stats', 1),
+(23, 1, 'ac_db_stats', '[[lang:de]]Besucher / Seitenzugriffe[[lang:en]]Visitors / Pageviews[[lang:it]]Visitatori / Visualizzazioni di pagina', 'admincenter.php?site=db_stats', 1),
 (24, 3, 'ac_admin_log', '[[lang:de]]Admin-Protokoll[[lang:en]]Admin Log[[lang:it]]Registro Admin', 'admincenter.php?site=admin_log', 1),
 (25, 1, 'ac_update_core', '[[lang:de]]Core aktualisieren[[lang:en]]Update Core[[lang:it]]Aggiorna Core', 'admincenter.php?site=update_core', 1),
 (26, 5, 'ac_headstyle', '[[lang:de]]Kopfzeilen-Stil[[lang:en]]Head Style[[lang:it]]Stile intestazione', 'admincenter.php?site=admin_headstyle', 1);
