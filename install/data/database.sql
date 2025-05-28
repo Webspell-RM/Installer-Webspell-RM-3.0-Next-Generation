@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `logs` (
     `log_type` VARCHAR(255),
     `log_message` TEXT,
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 -- Ende der Tabelle 'logs'
 
 -- Tabellenstruktur für Tabelle `backups`
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS `backups` (
   `description` text,
   `createdby` int(11) NOT NULL DEFAULT '0',
   `createdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 -- Ende der Tabelle 'backups'
 
 -- Tabellenstruktur für Tabelle `captcha`
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `captcha` (
   `captcha` INT(11) NOT NULL DEFAULT '0',
   `deltime` INT(11) NOT NULL DEFAULT '0',
   PRIMARY KEY  (`hash`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 -- Ende der Tabelle 'captcha'
 
 -- Tabellenstruktur für Tabelle `contact`
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `contact` (
   `name` varchar(100) NOT NULL,
   `email` varchar(200) NOT NULL,
   `sort` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 -- Ende der Tabelle 'contact'
 
 -- Tabellenstruktur für Tabelle `email` 
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `email` (
   `html` int(1) NOT NULL,
   `smtp` int(1) NOT NULL,
   `secure` int(1) NOT NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `email` (`emailID`, `user`, `password`, `host`, `port`, `debug`, `auth`, `html`, `smtp`, `secure`) 
 VALUES (1, '', '', '', 25, 0, 0, 1, 0, 0);
@@ -61,7 +61,7 @@ VALUES (1, '', '', '', 25, 0, 0, 1, 0, 0);
 CREATE TABLE IF NOT EXISTS `lock` (
   `time` int(11) NOT NULL,
   `reason` text NOT NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 -- Ende der Tabelle 'lock'
 
 -- Tabellenstruktur für Tabelle `navigation_dashboard_categories`
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `navigation_dashboard_categories` (
   `sort` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`catID`),
   UNIQUE KEY `modulname` (`modulname`, `catID`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `navigation_dashboard_categories` (`catID`, `name`, `modulname`, `fa_name`, `sort_art`, `sort`) VALUES
 (1, '[[lang:de]]Webseiten Info - Einstellungen[[lang:en]]Website Info - Settings[[lang:it]]Informazioni-Impostazioni Sito', 'cat_webinfo', 'bi bi-gear', 0, 1),
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `navigation_dashboard_links` (
   `sort` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`linkID`),
   UNIQUE KEY `modulname` (`modulname`, `linkID`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `navigation_dashboard_links` (`linkID`, `catID`, `modulname`, `name`, `url`, `sort`) VALUES
 (1, 1, 'ac_overview', '[[lang:de]]Webserver-Info[[lang:en]]Webserver Info[[lang:it]]Informazioni Sul Sito', 'admincenter.php?site=overview', 1),
@@ -126,7 +126,7 @@ INSERT INTO `navigation_dashboard_links` (`linkID`, `catID`, `modulname`, `name`
 (20, 3, 'ac_security_overview', '[[lang:de]]Admin Security[[lang:en]]Admin Security[[lang:it]]Sicurezza Admin', 'admincenter.php?site=security_overview', 2),
 (21, 3, 'ac_user_roles', '[[lang:de]]Registrierte Benutzer und Rollen[[lang:en]]Registered users and Roles[[lang:it]]Utenti registrati e ruoli', 'admincenter.php?site=user_roles', 3),
 (22, 3, 'role_permissions', '[[lang:de]]Rollenberechtigungen[[lang:en]]Role Permissions[[lang:it]]Permessi dei ruoli', 'admincenter.php?site=admin_role_permissions', 1),
-(23, 1, 'ac_db_stats', '[[lang:de]]Statistiken Ã¼ber Besucher und Seitenzugriffe[[lang:en]]Statistics about visitors and page views[[lang:it]]Statistiche su visitatori e visualizzazioni di pagina', 'admincenter.php?site=db_stats', 1),
+(23, 1, 'ac_db_stats', '[[lang:de]]Statistiken Besucher / Seitenzugriffe[[lang:en]]Statistics Visitors / Page Views[[lang:it]]Statistiche Visitatori / Visualizzazioni di pagina', 'admincenter.php?site=db_stats', 1),
 (24, 3, 'ac_admin_log', '[[lang:de]]Admin-Protokoll[[lang:en]]Admin Log[[lang:it]]Registro Admin', 'admincenter.php?site=admin_log', 1),
 (25, 1, 'ac_update_core', '[[lang:de]]Core aktualisieren[[lang:en]]Update Core[[lang:it]]Aggiorna Core', 'admincenter.php?site=update_core', 1),
 (26, 5, 'ac_headstyle', '[[lang:de]]Kopfzeilen-Stil[[lang:en]]Head Style[[lang:it]]Stile intestazione', 'admincenter.php?site=admin_headstyle', 1);
@@ -141,7 +141,7 @@ CREATE TABLE IF NOT EXISTS `navigation_website_main` (
   `sort` int(2) NOT NULL DEFAULT '0',
   `isdropdown` int(1) NOT NULL DEFAULT '1',
   `windows` int(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
   
 INSERT INTO `navigation_website_main` (`mnavID`, `name`, `url`, `default`, `sort`, `isdropdown`, `windows`) VALUES
 (1, '[[lang:de]]HAUPT[[lang:en]]MAIN[[lang:it]]PRINCIPALE', '#', 1, 1, 1, 1),
@@ -162,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `navigation_website_sub` (
   `sort` int(2) NOT NULL DEFAULT '0',
   `indropdown` int(1) NOT NULL DEFAULT '1',
   `themes_modulname` varchar(255) DEFAULT 'default'
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
   
 INSERT INTO `navigation_website_sub` (`snavID`, `mnavID`, `name`, `modulname`, `url`, `sort`, `indropdown`, `themes_modulname`) VALUES
 (1, 6, '[[lang:de]]Kontakt[[lang:en]]Contact[[lang:it]]Contatti', 'contact', 'index.php?site=contact', 1, 1, 'default'),
@@ -180,7 +180,7 @@ CREATE TABLE IF NOT EXISTS `plugins_footer_easy` (
   `new_tab` tinyint(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   UNIQUE KEY `link_number` (`link_number`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `plugins_footer_easy` (`id`, `link_number`, `copyright_link_name`, `copyright_link`, `new_tab`) VALUES
 (1, 1, '[[lang:de]]Impressum[[lang:en]]Imprint[[lang:it]]Impronta Editoriale', 'index.php?site=imprint', 0),
@@ -200,7 +200,7 @@ CREATE TABLE IF NOT EXISTS `plugins_startpage_settings_widgets` (
   `widgetdatei` varchar(255) NOT NULL,
   `activated` int(1) DEFAULT '1',
   `sort` int(11) DEFAULT '1'
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `plugins_startpage_settings_widgets` (`id`, `position`, `modulname`, `themes_modulname`, `widgetname`, `widgetdatei`, `activated`, `sort`) VALUES
 (1, 'navigation_widget', 'navigation', 'default', 'Navigation', 'widget_navigation', 1, 1),
@@ -252,7 +252,7 @@ CREATE TABLE IF NOT EXISTS `settings_languages` (
   `language` varchar(255) NOT NULL,
   `lang` char(2) NOT NULL,
   `alt` varchar(255) NOT NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `settings_languages` (`langID`, `language`, `lang`, `alt`) VALUES
 (1, 'danish', 'da', 'danish'),
@@ -338,7 +338,7 @@ CREATE TABLE IF NOT EXISTS `settings_plugins_widget` (
   `widgetname` varchar(255) NOT NULL,
   `widgetdatei` varchar(255) NOT NULL,
   `area` int(11) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `settings_plugins_widget` (`id`, `modulname`, `widgetname`, `widgetdatei`, `area`) VALUES
 (1, 'navigation', 'Navigation', 'widget_navigation', 2),
@@ -356,7 +356,7 @@ CREATE TABLE IF NOT EXISTS `settings_plugins_widget_settings` (
   `widgetdatei` varchar(255) NOT NULL,
   `activated` int(1) DEFAULT '1',
   `sort` int(11) DEFAULT '1'
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT IGNORE INTO `settings_plugins_widget_settings` (`id`, `side`, `position`, `modulname`, `themes_modulname`, `widgetname`, `widgetdatei`, `activated`, `sort`) VALUES
 (1, '', 'navigation_widget', 'navigation', 'default', 'Navigation', 'widget_navigation', 1, 0),
@@ -379,7 +379,7 @@ CREATE TABLE IF NOT EXISTS `settings_recaptcha` (
   `activated` int(11) NOT NULL DEFAULT '0',
   `webkey` varchar(255) NOT NULL,
   `seckey` varchar(255) NOT NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `settings_recaptcha` (`activated`, `webkey`, `seckey`) VALUES
 (0, 'Web-Key', 'Sec-Key');
@@ -401,7 +401,7 @@ CREATE TABLE IF NOT EXISTS `settings_social_media` (
   `gametracker` varchar(255) NOT NULL,
   `discord` varchar(255) NOT NULL,
   `steam` varchar(255) NOT NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT IGNORE INTO `settings_social_media` (`socialID`, `twitch`, `facebook`, `twitter`, `youtube`, `rss`, `vine`, `flickr`, `linkedin`, `instagram`, `since`, `gametracker`, `discord`, `steam`) VALUES
 (1, 'https://www.twitch.tv/pulsradiocom', 'https://www.facebook.com/WebspellRM', 'https://twitter.com/webspell_rm', 'https://www.youtube.com/channel/UCE5yTn9ljzSnC_oMp9Jnckg', '-', '-', '-', '-', '-', '2025', '85.14.228.228:28960', 'https://www.discord.gg/kErxPxb', '-');
@@ -435,7 +435,7 @@ CREATE TABLE IF NOT EXISTS `settings_static` (
   `date` int(14) NOT NULL,
   `editor` int(1) DEFAULT 0,
   `access_roles` text DEFAULT NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 -- Ende der Tabelle 'settings_static'
 
 -- Tabellenstruktur für Tabelle `settings_widgets`
@@ -451,7 +451,7 @@ CREATE TABLE IF NOT EXISTS `settings_widgets` (
   `activate` int(11) DEFAULT 0,
   `number` int(1) NOT NULL,
   `sort` int(11) DEFAULT 0
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `settings_widgets` (`id`, `position`, `description`, `modulname`, `themes_modulname`, `widget`, `widgetname`, `widgetdatei`, `activate`, `number`, `sort`) VALUES
 (1, 'page_navigation_widget', 'page_navigation_widget', 'navigation', 'default', 'widget1', 'Navigation', 'widget_navigation', 0, 1, 1),
@@ -463,7 +463,7 @@ CREATE TABLE IF NOT EXISTS `tags` (
   `rel` varchar(255) NOT NULL,
   `ID` int(11) NOT NULL,
   `tag` varchar(255) NOT NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 -- Ende der Tabelle 'settings_widgets'
 
 -- Tabellenstruktur für Tabelle `users`
@@ -506,7 +506,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `last_update` datetime DEFAULT NULL,
   PRIMARY KEY (`userID`),
   KEY `idx_last_update` (`last_update`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 -- Ende der Tabelle 'users'
 
 -- Tabellenstruktur für Tabelle `banned_ips`
@@ -535,35 +535,35 @@ CREATE TABLE IF NOT EXISTS `failed_login_attempts` (
   PRIMARY KEY (`id`),
   KEY `userID` (`userID`),
   CONSTRAINT `fk_failed_login_user` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 -- Ende der Tabelle 'failed_login_attempts'
 
 -- Tabellenstruktur für Tabelle `user_roles`
 CREATE TABLE IF NOT EXISTS `user_roles` (
-  `roleID` int(11) NOT NULL AUTO_INCREMENT,
-  `role_name` varchar(50) NOT NULL,
-  `description` text DEFAULT NULL,
-  `is_default` tinyint(1) DEFAULT 0,
+  `roleID` INT(11) NOT NULL AUTO_INCREMENT,
+  `role_name` VARCHAR(50) NOT NULL,
+  `description` TEXT DEFAULT NULL,
+  `is_default` TINYINT(1) DEFAULT 0,
   PRIMARY KEY (`roleID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci AUTO_INCREMENT=17;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `user_roles` (`roleID`, `role_name`, `description`, `is_default`) VALUES
-(1, 'Admin', 'Vollzugriff auf alle Funktionen', 0),
-(2, 'Co-Admin', 'Unterstützt Admin bei Verwaltungsaufgaben', 0),
-(3, 'Leader', 'Clan-Leiter, strategische Entscheidungen', 0),
-(4, 'Co-Leader', 'Vertretung des Leaders', 0),
-(5, 'Squad-Leader', 'Leitet eine eigene Squad-Gruppe', 0),
-(6, 'War-Organisator', 'Organisiert Clanwars und Turniere', 0),
-(7, 'Moderator', 'Betreut Forum und Community-Bereiche', 0),
-(8, 'Redakteur', 'Schreibt News und verwaltet Inhalte', 0),
-(9, 'Member', 'Vollwertiges Clan-Mitglied', 0),
-(10, 'Trial-Member', 'Mitglied auf Probe', 0),
-(11, 'Gast', 'Öffentlicher Besucher ohne Login', 0),
-(12, 'Registrierter Benutzer', 'Angemeldet, aber nicht im Clan', 0),
-(13, 'Ehrenmitglied', 'Ehemalige Mitglieder mit besonderem Status', 0),
-(14, 'Streamer', 'Darf Stream-Ankündigungen posten', 0),
-(15, 'Designer', 'Erstellt oder pflegt Grafiken und Layouts', 0),
-(16, 'Techniker', 'Hat Zugriff auf technische Einstellungen', 0);
+(1,  'Admin',                'Vollzugriff auf alle Funktionen',                          0),
+(2,  'Co-Admin',             'Unterstützt Admin bei Verwaltungsaufgaben',                0),
+(3,  'Leader',               'Clan-Leiter, strategische Entscheidungen',                 0),
+(4,  'Co-Leader',            'Vertretung des Leaders',                                   0),
+(5,  'Squad-Leader',         'Leitet eine eigene Squad-Gruppe',                          0),
+(6,  'War-Organisator',      'Organisiert Clanwars und Turniere',                        0),
+(7,  'Moderator',            'Betreut Forum und Community-Bereiche',                     0),
+(8,  'Redakteur',            'Schreibt News und verwaltet Inhalte',                      0),
+(9,  'Member',               'Vollwertiges Clan-Mitglied',                               0),
+(10, 'Trial-Member',         'Mitglied auf Probe',                                       0),
+(11, 'Gast',                 'Öffentlicher Besucher ohne Login',                         0),
+(12, 'Registrierter Benutzer','Angemeldet, aber nicht im Clan',                          0),
+(13, 'Ehrenmitglied',        'Ehemalige Mitglieder mit besonderem Status',               0),
+(14, 'Streamer',             'Darf Stream-Ankündigungen posten',                         0),
+(15, 'Designer',             'Erstellt oder pflegt Grafiken und Layouts',                0),
+(16, 'Techniker',            'Hat Zugriff auf technische Einstellungen',                 0);
 -- Ende der Tabelle 'user_roles'
 
 -- Tabellenstruktur für Tabelle `user_role_assignments`
@@ -594,7 +594,7 @@ CREATE TABLE IF NOT EXISTS `user_sessions` (
   UNIQUE KEY `unique_session` (`session_id`),
   KEY `userID` (`userID`),
   CONSTRAINT `fk_sessions_userID` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 -- Ende der Tabelle 'user_sessions'
 
 -- Tabellenstruktur für Tabelle `admin_access_rights`
@@ -604,7 +604,7 @@ CREATE TABLE IF NOT EXISTS `admin_access_rights` (
     `access_level` INT(11) DEFAULT 0,
     PRIMARY KEY (`adminID`, `moduleID`),
     FOREIGN KEY (`adminID`) REFERENCES `users`(`userID`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 -- Ende der Tabelle 'admin_access_rights'
 
 -- Tabellenstruktur für Tabelle `user_role_admin_navi_rights`
@@ -639,29 +639,31 @@ INSERT INTO `user_role_admin_navi_rights` (`id`, `roleID`, `type`, `modulname`, 
 (17, 1, 'link', 'footer_easy', 19),
 (18, 1, 'link', 'ac_user_roles', 21),
 (19, 1, 'link', 'ac_webside_navigation', 9),
-(21, 1, 'link', 'ac_themes_installer', 10),
-(22, 1, 'link', 'ac_db_stats', 23),
-(23, 1, 'link', 'ac_admin_log', 24),
-(25, 1, 'link', 'ac_update_core', 25),
-(26, 1, 'link', 'ac_headstyle', 26),
-(28, 1, 'link', 'ac_role_permissions', 22),
-(29, 1, 'link', 'ac_statistik', 2),
-(30, 1, 'link', 'ac_security_overview', 20),
-(32, 1, 'category', 'cat_webinfo', 1),
-(33, 1, 'category', 'cat_admin', 3),
-(34, 1, 'category', 'cat_team', 4),
-(35, 1, 'category', 'cat_theme', 5),
-(36, 1, 'category', 'cat_plugin', 6),
-(37, 1, 'category', 'cat_web_content', 7),
-(38, 1, 'category', 'cat_slider', 9),
-(39, 1, 'category', 'cat_social', 11),
-(40, 1, 'category', 'cat_link', 12),
-(41, 1, 'category', 'cat_spam', 2),
-(42, 1, 'category', 'cat_gallery', 8),
-(43, 1, 'category', 'cat_game', 10),
-(44, 1, 'link', 'ac_statistic', 1);
+(20, 1, 'link', 'ac_themes_installer', 10),
+(21, 1, 'link', 'ac_db_stats', 23),
+(22, 1, 'link', 'ac_admin_log', 24),
+(23, 1, 'link', 'ac_update_core', 25),
+(24, 1, 'link', 'ac_headstyle', 26),
+(25, 1, 'link', 'ac_role_permissions', 22),
+(26, 1, 'link', 'ac_security_overview', 20),
+(27, 1, 'category', 'cat_webinfo', 1),
+(28, 1, 'category', 'cat_admin', 3),
+(29, 1, 'category', 'cat_team', 4),
+(30, 1, 'category', 'cat_theme', 5),
+(31, 1, 'category', 'cat_plugin', 6),
+(32, 1, 'category', 'cat_web_content', 7),
+(33, 1, 'category', 'cat_slider', 9),
+(34, 1, 'category', 'cat_social', 11),
+(35, 1, 'category', 'cat_link', 12),
+(36, 1, 'category', 'cat_spam', 2),
+(37, 1, 'category', 'cat_gallery', 8),
+(38, 1, 'category', 'cat_game', 10),
+(39, 1, 'link', 'ac_statistic', 2),
+(40, 1, 'link', 'ac_site_lock', 0),
+(41, 1, 'link', 'ac_theme_preview', 0),
+(42, 1, 'link', 'ac_theme_save', 0),
+(43, 1, 'link', 'role_permissions', 22);
 -- Ende der Tabelle 'user_role_admin_navi_rights'
-
 
 -- Tabellenstruktur für Tabelle `user_role_permissions`
 CREATE TABLE IF NOT EXISTS `user_role_permissions` (
@@ -701,7 +703,7 @@ CREATE TABLE IF NOT EXISTS `user_register_attempts` (
 CREATE TABLE IF NOT EXISTS `user_username` (
   `userID` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `username` varchar(255) NOT NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 -- Ende der Tabelle 'user_username'
 
 -- Tabellenstruktur für Tabelle `user_visitors`
@@ -710,7 +712,7 @@ CREATE TABLE IF NOT EXISTS `user_visitors` (
   `userID` int(11) NOT NULL DEFAULT '0',
   `visitor` int(11) NOT NULL DEFAULT '0',
   `date` int(14) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 -- Ende der Tabelle 'user_visitors'
 
 -- Tabellenstruktur für Tabelle `visitor_statistics`
@@ -723,7 +725,7 @@ CREATE TABLE IF NOT EXISTS `visitor_statistics` (
   `page` varchar(255) DEFAULT NULL,
   `country_code` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 -- Ende der Tabelle 'visitor_statistics'
 
 -- Tabellenstruktur für Tabelle `adminlog`
@@ -735,7 +737,7 @@ CREATE TABLE IF NOT EXISTS `adminlog` (
   `timestamp` int(11) NOT NULL,
   `ip` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`logID`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 -- Ende der Tabelle 'adminlog'
 
 -- Tabellenstruktur für Tabelle `admin_audit_log`
@@ -756,7 +758,7 @@ CREATE TABLE IF NOT EXISTS `admin_audit_log` (
   KEY `adminID` (`adminID`),
   KEY `affected_table` (`affected_table`),
   KEY `timestamp` (`timestamp`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 -- Ende der Tabelle 'admin_audit_log'
 
 -- Tabellenstruktur für Tabelle `settings_themes`
@@ -776,7 +778,7 @@ CREATE TABLE IF NOT EXISTS `settings_themes` (
   `headlines` varchar(255) DEFAULT '0',
   `sort` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`themeID`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `settings_themes` (`themeID`, `name`, `modulname`, `pfad`, `version`, `active`, `themename`, `navbar_class`, `navbar_theme`, `express_active`, `logo_pic`, `reg_pic`, `headlines`, `sort`) VALUES
 (1, 'Default', 'default', 'default', '0.3', 1, 'lux', 'bg-primary', 'dark', 0, 'default_logo.png', 'default_login_bg.jpg', 'headlines_03.css', 1);
@@ -835,7 +837,7 @@ CREATE TABLE IF NOT EXISTS user_profiles (
     gender VARCHAR(50) DEFAULT NULL,
     sexuality VARCHAR(100) DEFAULT NULL,
     PRIMARY KEY (userID)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `user_profiles` (`userID`, `firstname`, `lastname`, `location`, `about_me`, `avatar`, `age`, `gender`, `sexuality`) VALUES
 (1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -850,7 +852,7 @@ CREATE TABLE IF NOT EXISTS user_stats (
     logins_count INT UNSIGNED DEFAULT 0,
     total_time_online INT UNSIGNED DEFAULT 0, -- in Sekunden
     PRIMARY KEY (userID)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 -- Ende der Tabelle 'user_stats'
 
 -- Tabellenstruktur für Tabelle user_settings
@@ -861,7 +863,7 @@ CREATE TABLE IF NOT EXISTS user_settings (
     email_notifications TINYINT(1) DEFAULT 1,
     private_profile TINYINT(1) DEFAULT 0,
     PRIMARY KEY (userID)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `user_settings` (`userID`, `language`, `dark_mode`, `email_notifications`, `private_profile`) VALUES
 (1, 'de', 0, 1, 0);
@@ -876,7 +878,7 @@ CREATE TABLE IF NOT EXISTS user_socials (
     website VARCHAR(255) DEFAULT NULL,
     github VARCHAR(255) DEFAULT NULL,
     PRIMARY KEY (userID)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `user_socials` (`userID`, `facebook`, `twitter`, `instagram`, `website`, `github`) VALUES
 (1, NULL, NULL, NULL, NULL, NULL);
@@ -894,5 +896,5 @@ CREATE TABLE IF NOT EXISTS `plugins_installed` (
   `folder` varchar(255) DEFAULT NULL,
   `installed_date` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 -- Ende der Tabelle 'plugins_installed'
