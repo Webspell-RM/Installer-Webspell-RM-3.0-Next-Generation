@@ -111,7 +111,7 @@ INSERT INTO `navigation_dashboard_links` (`catID`, `modulname`, `name`, `url`, `
 (1, 'ac_email', '[[lang:de]]E-Mail[[lang:en]]E-Mail[[lang:it]]E-Mail', 'admincenter.php?site=email', 4),
 (1, 'ac_contact', '[[lang:de]]Kontakte[[lang:en]]Contacts[[lang:it]]Contatti', 'admincenter.php?site=contact', 5),
 (1, 'ac_database', '[[lang:de]]Datenbank[[lang:en]]Database[[lang:it]]Database', 'admincenter.php?site=database', 6),
-(1, 'ac_languages', '[[lang:de]]Sprachen verwalten[[lang:en]]Manage Languages[[lang:it]]Gestisci lingue', 'admincenter.php?site=admin_languages', 7)
+(1, 'ac_languages', '[[lang:de]]Sprachen verwalten[[lang:en]]Manage Languages[[lang:it]]Gestisci lingue', 'admincenter.php?site=admin_languages', 7),
 (1, 'ac_editlang', '[[lang:de]]Spracheditor[[lang:en]]Language Editor[[lang:it]]Editor di Linguaggi', 'admincenter.php?site=editlang', 8),
 (1, 'ac_update_core', '[[lang:de]]Core aktualisieren[[lang:en]]Update Core[[lang:it]]Aggiorna Core', 'admincenter.php?site=update_core', 9),
 (2, 'ac_statistic', '[[lang:de]]Seiten Statistiken[[lang:en]]Page Statistics[[lang:it]]Pagina delle Statistiche', 'admincenter.php?site=statistic', 1),
@@ -263,7 +263,7 @@ CREATE TABLE `settings_languages` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `settings_languages` (`id`, `iso_639_1`, `iso_639_2`, `name_en`, `name_native`, `name_de`, `active`, `flag`, `created_at`, `updated_at`) VALUES
-(1, 'dk', 'dan', 'Danish', 'Dansk', 'Dänisch', 1, '/admin/images/flags/da.svg', NOW(), NULL),
+(1, 'dk', 'dan', 'Danish', 'Dansk', 'Dänisch', 1, '/admin/images/flags/dk.svg', NOW(), NULL),
 (2, 'nl', 'nld', 'Dutch', 'Nederlands', 'Niederländisch', 1, '/admin/images/flags/nl.svg', NOW(), NULL),
 (3, 'en', 'eng', 'English', 'English', 'Englisch', 1, '/admin/images/flags/gb.svg', NOW(), NULL),
 (4, 'fi', 'fin', 'Finnish', 'Suomi', 'Finnisch', 1, '/admin/images/flags/fi.svg', NOW(), NULL),
@@ -632,7 +632,7 @@ INSERT INTO `user_role_admin_navi_rights` (`id`, `roleID`, `type`, `modulname`, 
 (27, 1, 'link', 'ac_site_lock', 0),
 (28, 1, 'link', 'ac_theme_preview', 0),
 (29, 1, 'link', 'ac_theme_save', 0),
-(30, 1, 'link', 'ac_languages', 28);
+(30, 1, 'link', 'ac_languages', 28),
 (31, 1, 'category', 'cat_system', 1),
 (32, 1, 'category', 'cat_statistics', 2),
 (33, 1, 'category', 'cat_users', 3),
