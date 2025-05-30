@@ -91,20 +91,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             'adminweburl' => $admin_weburl,
         ];
 
-        // Schritt 1: Struktur importieren
-        if (!isset($_SESSION['step4_sql_imported'])) {
-            $structureFile = __DIR__ . '/data/admin_user.sql';
-
-            if (!file_exists($structureFile)) {
-                die('❌ Struktur-SQL-Datei nicht gefunden: ' . $structureFile);
-            }
-
-            $error = import_sql_file($mysqli, $structureFile, $replacements);
-            $_SESSION['step4_sql_imported'] = true;
-        }
-
-        // Schritt 2: Admin-Daten importieren
-        if (!$error) {
+        // Schritt: Admin-Daten importieren
+        if (!isset($_SESSION['admin_user_inserted'])) {
             $adminSqlFile = __DIR__ . '/data/admin_user.sql';
 
             if (!file_exists($adminSqlFile)) {
@@ -112,15 +100,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
 
             $error = import_sql_file($mysqli, $adminSqlFile, $replacements);
-        }
 
-        if (!$error) {
-            $success = "✅ Admin-Konto erfolgreich erstellt! Du wirst in wenigen Sekunden automatisch zu <strong>Schritt 6</strong> weitergeleitet.";
-            echo '<script>
-                setTimeout(function () {
-                    window.location.href = "step6.php";
-                }, 5000);
-            </script>';
+            if (!$error) {
+                $_SESSION['admin_user_inserted'] = true;
+                $success = "✅ Admin-Konto erfolgreich erstellt! Du wirst in wenigen Sekunden automatisch zu <strong>Schritt 6</strong> weitergeleitet.";
+                echo '<script>
+                    setTimeout(function () {
+                        window.location.href = "step6.php";
+                    }, 5000);
+                </script>';
+            }
         }
     }
 }
