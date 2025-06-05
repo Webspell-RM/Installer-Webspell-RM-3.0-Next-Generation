@@ -881,3 +881,16 @@ CREATE TABLE IF NOT EXISTS `plugins_installed` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 -- Ende der Tabelle 'plugins_installed'
+
+-- Tabellenstruktur für Tabelle link_clicks
+CREATE TABLE IF NOT EXISTS link_clicks (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    plugin VARCHAR(50),
+    itemID INT,
+    url TEXT,
+    clicked_at DATETIME,
+    ip_address VARCHAR(45),
+    user_agent TEXT,
+    referrer TEXT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- Ende der Tabelle 'link_clicks'
