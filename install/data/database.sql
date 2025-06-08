@@ -357,17 +357,6 @@ CREATE TABLE IF NOT EXISTS `settings_privacy_policy` (
 INSERT IGNORE INTO `settings_privacy_policy` (`privacy_policyID`, `date`, `privacy_policy_text`, `editor`) VALUES (1, NOW(), '[[lang:de]] Datenschutz-Bestimmungen in deutscher Sprache.<br /><span style="color:#c0392b"><strong>Konfigurieren Sie bitte Ihre Datenschutz-Bestimmungen!</strong></span><br />[[lang:en]] Privacy Policy in English.<br /><span style="color:#c0392b"><strong>Please configure your Privacy Policy!</strong></span>[[lang:it]] Informativa sulla Privacy in Italiano.<br /><span style="color:#c0392b"><strong>Si prega di configurare l’Informativa sulla Privacy!</strong></span>', 1);
 -- Ende der Tabelle 'settings_privacy_policy'
 
--- Tabellenstruktur für Tabelle `settings_recaptcha`
-CREATE TABLE IF NOT EXISTS `settings_recaptcha` (
-  `activated` int(11) NOT NULL DEFAULT '0',
-  `webkey` varchar(255) NOT NULL,
-  `seckey` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-INSERT INTO `settings_recaptcha` (`activated`, `webkey`, `seckey`) VALUES
-(0, 'Web-Key', 'Sec-Key');
--- Ende der Tabelle 'settings_recaptcha'
-
 -- Tabellenstruktur für Tabelle `settings_social_media`
 CREATE TABLE IF NOT EXISTS `settings_social_media` (
   `socialID` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
